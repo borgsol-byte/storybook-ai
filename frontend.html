@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="no">
 <head>
 <meta charset="UTF-8">
@@ -8,177 +9,146 @@
 <title>StoryBook AI</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink:#1a1520; --paper:#faf6ef; --gold:#b8912a; --gold2:#d4a843;
-  --warm:#8b6914; --muted:#7a6e5a; --light:#ede5d4; --err:#c0392b;
-  --ok:#2d7a4f; --r:13px; --sh:0 3px 20px rgba(0,0,0,0.09);
+:root{
+  --ink:#1a1520;--paper:#faf6ef;--gold:#b8912a;--gold2:#d4a843;
+  --warm:#8b6914;--muted:#7a6e5a;--light:#ede5d4;--err:#c0392b;
+  --ok:#2d7a4f;--r:13px;--sh:0 3px 20px rgba(0,0,0,0.09);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--paper);color:var(--ink);font-family:'Lora',Georgia,serif;min-height:100vh}
 
-/* Header */
-.hdr{background:var(--ink);text-align:center;padding:28px 20px 18px;position:relative;overflow:hidden}
-.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 130%,rgba(184,145,42,0.18) 0%,transparent 65%)}
-.hdr-eye{font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:7px;position:relative}
-.hdr-title{font-family:'Playfair Display',serif;font-size:clamp(32px,9vw,52px);font-weight:900;line-height:1;position:relative;
-  background:linear-gradient(135deg,#f0d878,var(--gold2),#c9922a,#f0d878);background-size:300% 100%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite}
+.hdr{background:var(–ink);text-align:center;padding:28px 20px 18px;position:relative;overflow:hidden}
+.hdr::before{content:’’;position:absolute;inset:0;background:radial-gradient(ellipse at 50% 130%,rgba(184,145,42,0.18) 0%,transparent 65%)}
+.hdr-eye{font-size:10px;letter-spacing:5px;color:var(–gold);text-transform:uppercase;margin-bottom:7px;position:relative}
+.hdr-title{font-family:‘Playfair Display’,serif;font-size:clamp(32px,9vw,52px);font-weight:900;line-height:1;position:relative;
+background:linear-gradient(135deg,#f0d878,var(–gold2),#c9922a,#f0d878);background-size:300% 100%;
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite}
 .hdr-sub{font-size:13px;color:#5a5060;margin-top:7px;font-style:italic;position:relative}
 .status-pill{display:inline-flex;align-items:center;gap:6px;margin-top:11px;padding:5px 14px;border-radius:20px;font-size:12px;position:relative;border:1px solid;transition:all 0.3s}
-.status-pill.ok  {background:rgba(45,122,79,0.15); border-color:rgba(45,122,79,0.4); color:#2d7a4f}
-.status-pill.err {background:rgba(192,57,43,0.12); border-color:rgba(192,57,43,0.35);color:#c0392b}
-.status-pill.chk {background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:#4a4060}
+.status-pill.ok {background:rgba(45,122,79,0.15);border-color:rgba(45,122,79,0.4);color:#2d7a4f}
+.status-pill.err{background:rgba(192,57,43,0.12);border-color:rgba(192,57,43,0.35);color:#c0392b}
+.status-pill.chk{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:#4a4060}
 .pdot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 2s infinite}
 @keyframes shimmer{0%{background-position:0%}100%{background-position:300%}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
 
-/* Tabs */
-.tabs{display:flex;background:var(--ink);border-bottom:1px solid rgba(184,145,42,0.18);overflow-x:auto;scrollbar-width:none}
+.tabs{display:flex;background:var(–ink);border-bottom:1px solid rgba(184,145,42,0.18);overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:1;min-width:68px;padding:12px 5px 10px;background:none;border:none;border-bottom:2.5px solid transparent;
-  color:#3a3030;font-size:10.5px;font-family:'Lora',serif;cursor:pointer;text-align:center;transition:all 0.2s;white-space:nowrap}
-.tab.active{color:var(--gold2);border-bottom-color:var(--gold2)}
+color:#3a3030;font-size:10.5px;font-family:‘Lora’,serif;cursor:pointer;text-align:center;transition:all 0.2s;white-space:nowrap}
+.tab.active{color:var(–gold2);border-bottom-color:var(–gold2)}
 .tab.done{color:#5a4a30}
 .tab-icon{display:block;font-size:18px;margin-bottom:3px}
 
-/* Layout */
 .main{max-width:600px;margin:0 auto;padding:20px 14px 90px}
+.card{background:#fff;border:1px solid var(–light);border-radius:var(–r);padding:18px;margin-bottom:14px;box-shadow:var(–sh)}
+.card-title{font-family:‘Playfair Display’,serif;font-size:11.5px;font-weight:700;letter-spacing:1.2px;color:var(–gold);text-transform:uppercase;margin-bottom:14px}
 
-/* Cards */
-.card{background:#fff;border:1px solid var(--light);border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
-.card-title{font-family:'Playfair Display',serif;font-size:11.5px;font-weight:700;letter-spacing:1.2px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
-
-/* Form */
-.lbl{display:block;font-size:13px;color:var(--warm);margin-bottom:5px;font-weight:500}
-.hint{font-size:12px;color:var(--muted);font-style:italic;margin-top:5px;line-height:1.55}
-input[type=text],input[type=password],textarea{width:100%;padding:11px 13px;background:var(--paper);border:1.5px solid var(--light);
-  border-radius:9px;color:var(--ink);font-family:'Lora',serif;font-size:14px;outline:none;transition:border 0.2s;-webkit-appearance:none}
-input:focus,textarea:focus{border-color:var(--gold2)}
+.lbl{display:block;font-size:13px;color:var(–warm);margin-bottom:5px;font-weight:500}
+.hint{font-size:12px;color:var(–muted);font-style:italic;margin-top:5px;line-height:1.55}
+input[type=text],input[type=password],textarea{width:100%;padding:11px 13px;background:var(–paper);border:1.5px solid var(–light);
+border-radius:9px;color:var(–ink);font-family:‘Lora’,serif;font-size:14px;outline:none;transition:border 0.2s;-webkit-appearance:none}
+input:focus,textarea:focus{border-color:var(–gold2)}
 textarea{resize:vertical;line-height:1.7}
+.mono{font-family:monospace;font-size:13px;line-height:1.6}
 
-/* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:13px 20px;border-radius:28px;border:none;
-  font-family:'Playfair Display',serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.18s;width:100%;-webkit-appearance:none}
+font-family:‘Playfair Display’,serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.18s;width:100%;-webkit-appearance:none}
 .btn:active{transform:scale(0.97)}
-.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;font-size:15px;padding:15px;box-shadow:0 4px 16px rgba(184,145,42,0.28)}
+.btn-primary{background:linear-gradient(135deg,var(–gold),var(–gold2));color:#fff;font-size:15px;padding:15px;box-shadow:0 4px 16px rgba(184,145,42,0.28)}
 .btn-primary:disabled{opacity:0.38;cursor:not-allowed;transform:none}
-.btn-secondary{background:transparent;border:1.5px solid var(--light);color:var(--muted)}
-.btn-ghost{background:transparent;border:1.5px solid var(--gold);color:var(--gold)}
-.btn-danger{background:rgba(192,57,43,0.1);border:1.5px solid rgba(192,57,43,0.4);color:var(--err)}
+.btn-secondary{background:transparent;border:1.5px solid var(–light);color:var(–muted)}
+.btn-ghost{background:transparent;border:1.5px solid var(–gold);color:var(–gold)}
+.btn-danger{background:rgba(192,57,43,0.1);border:1.5px solid rgba(192,57,43,0.4);color:var(–err)}
 .btn-small{padding:8px 16px;font-size:12px;border-radius:20px;width:auto}
 .btn-row{display:flex;gap:9px}
 .btn-row .btn{flex:1}
 
-/* Upload */
-.upload-zone{border:2px dashed var(--light);border-radius:9px;padding:16px;text-align:center;cursor:pointer;background:var(--paper);transition:border 0.2s}
-.upload-zone:active{border-color:var(--gold2)}
+.upload-zone{border:2px dashed var(–light);border-radius:9px;padding:16px;text-align:center;cursor:pointer;background:var(–paper);transition:border 0.2s}
+.upload-zone:active{border-color:var(–gold2)}
 .thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
-.thumb{position:relative;width:66px;height:66px;border-radius:8px;overflow:hidden;border:2px solid var(--light)}
+.thumb{position:relative;width:66px;height:66px;border-radius:8px;overflow:hidden;border:2px solid var(–light)}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);color:#fff;font-size:9px;text-align:center;padding:2px}
-.thumb-del{position:absolute;top:-5px;right:-5px;width:18px;height:18px;background:var(--err);border:2px solid #fff;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.thumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.62);color:#fff;font-size:9px;text-align:center;padding:2px 3px;line-height:1.3}
+.thumb-del{position:absolute;top:-5px;right:-5px;width:18px;height:18px;background:var(–err);border:2px solid #fff;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer}
 
-/* Character list */
-.char-item{display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(--paper);border:1px solid var(--light);border-radius:9px;margin-bottom:8px}
-.char-thumb{width:52px;height:52px;border-radius:7px;object-fit:cover;border:2px solid var(--light);flex-shrink:0}
-.char-thumb-empty{width:52px;height:52px;border-radius:7px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.char-item{display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(–paper);border:1px solid var(–light);border-radius:9px;margin-bottom:8px}
+.char-thumb{width:52px;height:52px;border-radius:7px;object-fit:cover;border:2px solid var(–light);flex-shrink:0}
+.char-thumb-empty{width:52px;height:52px;border-radius:7px;background:var(–light);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
 .char-info{flex:1;min-width:0}
-.char-id{font-size:10px;color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;letter-spacing:1px}
-.char-name{font-size:14px;font-weight:500;margin:2px 0}
-.char-desc{font-size:12px;color:var(--muted);line-height:1.4;font-style:italic}
+.char-id{font-size:10px;color:var(–gold);font-family:‘Playfair Display’,serif;font-weight:700;letter-spacing:1px;margin-bottom:3px}
 
-/* Markup editor */
-.markup-help{background:#f8f4ec;border:1px solid var(--light);border-radius:9px;padding:12px;margin-bottom:12px;font-size:12px;color:var(--muted);line-height:1.7}
-.markup-help code{background:rgba(184,145,42,0.12);padding:1px 5px;border-radius:4px;font-family:monospace;font-size:12px;color:var(--warm)}
+/* Preview table */
+.preview-table{width:100%;border-collapse:collapse;font-size:12px}
+.preview-table th{text-align:left;padding:6px 8px;color:var(–gold);font-family:‘Playfair Display’,serif;font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(–light)}
+.preview-table td{padding:7px 8px;border-bottom:1px solid var(–light);vertical-align:top;color:var(–muted);line-height:1.4}
+.preview-table td:first-child{color:var(–gold);font-family:‘Playfair Display’,serif;font-weight:700;white-space:nowrap}
+.preview-table tr:last-child td{border-bottom:none}
+.tag{display:inline-block;background:rgba(184,145,42,0.12);color:var(–warm);border-radius:4px;padding:1px 5px;font-size:10px;margin-right:3px;font-family:monospace}
+.tag-sc{background:rgba(45,122,79,0.1);color:var(–ok)}
 
-/* Pages editor */
-.page-editor{border:1px solid var(--light);border-radius:9px;overflow:hidden;margin-bottom:10px}
-.page-editor-header{background:var(--paper);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--light)}
-.page-num{font-family:'Playfair Display',serif;font-size:12px;color:var(--gold);font-weight:700;letter-spacing:1px}
-.page-refs{font-size:11px;color:var(--muted)}
-.page-editor-body{padding:12px 14px;background:#fff}
-.page-visual{width:100%;padding:9px 12px;background:var(--paper);border:1.5px solid var(--light);border-radius:8px;font-family:'Lora',serif;font-size:13px;color:var(--ink);outline:none;resize:none}
-.page-visual:focus{border-color:var(--gold2)}
-.page-story{font-size:12px;color:var(--muted);font-style:italic;margin-top:7px;line-height:1.5;padding-left:8px;border-left:2px solid var(--light)}
+.progress-label{font-size:14px;color:var(–warm);margin-bottom:9px;font-style:italic;min-height:20px}
+.progress-bar{height:8px;background:var(–light);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(–gold),var(–gold2));transition:width 0.5s ease}
 
-/* Progress */
-.progress-label{font-size:14px;color:var(--warm);margin-bottom:9px;font-style:italic;min-height:20px}
-.progress-bar{height:8px;background:var(--light);border-radius:4px;overflow:hidden}
-.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 0.5s ease}
-
-/* Live grid */
 .live-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:14px}
-.live-cell{aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--light);border:1.5px solid var(--light);
-  display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:11px;color:#bbb;transition:border 0.2s;position:relative;cursor:pointer}
-.live-cell.done{border-color:var(--gold2)}
-.live-cell.err{border-color:var(--err);color:var(--err)}
-.live-cell.spin{border-color:var(--gold)}
+.live-cell{aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(–light);border:1.5px solid var(–light);
+display:flex;align-items:center;justify-content:center;font-family:‘Playfair Display’,serif;font-size:11px;color:#bbb;transition:border 0.2s;position:relative;cursor:pointer}
+.live-cell.done{border-color:var(–gold2)}
+.live-cell.err{border-color:var(–err);color:var(–err)}
+.live-cell.spin{border-color:var(–gold);animation:borderPulse 1.5s infinite}
 .live-cell img{width:100%;height:100%;object-fit:cover;display:block}
-.live-cell-num{position:absolute;bottom:3px;right:5px;font-size:9px;color:rgba(255,255,255,0.8);font-family:'Playfair Display',serif;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
-.live-cell-rerun{position:absolute;top:3px;right:3px;width:18px;height:18px;background:rgba(192,57,43,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;cursor:pointer}
+.live-cell-num{position:absolute;bottom:3px;right:5px;font-size:9px;color:rgba(255,255,255,0.85);font-family:‘Playfair Display’,serif;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
+@keyframes borderPulse{0%,100%{border-color:var(–gold)}50%{border-color:var(–gold2)}}
 
-/* Viewer */
-.viewer-wrap{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:13px;box-shadow:var(--sh);position:relative}
-.viewer-wrap img{width:100%;display:block;background:var(--ink);min-height:200px}
-.viewer-badge{position:absolute;top:11px;left:11px;background:rgba(0,0,0,0.65);border-radius:18px;padding:4px 12px;font-size:12px;color:var(--gold2);font-family:'Playfair Display',serif;font-weight:700}
+.viewer-wrap{background:var(–ink);border-radius:var(–r);overflow:hidden;margin-bottom:13px;box-shadow:var(–sh);position:relative}
+.viewer-wrap img{width:100%;display:block;background:var(–ink);min-height:200px}
+.viewer-badge{position:absolute;top:11px;left:11px;background:rgba(0,0,0,0.65);border-radius:18px;padding:4px 12px;font-size:12px;color:var(–gold2);font-family:‘Playfair Display’,serif;font-weight:700}
 .viewer-speak{position:absolute;top:11px;right:11px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.viewer-text{padding:13px 17px 15px;font-size:15px;line-height:1.75;color:#c8b99a;font-style:italic;background:var(--ink);border-radius:0 0 var(--r) var(--r)}
+.viewer-text{padding:13px 17px 15px;font-size:15px;line-height:1.75;color:#c8b99a;font-style:italic;background:var(–ink);border-radius:0 0 var(–r) var(–r)}
 .viewer-nav{display:flex;gap:10px;align-items:center;justify-content:center;margin:12px 0}
-.nav-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--light);background:#fff;font-size:21px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh);transition:all 0.15s}
+.nav-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(–light);background:#fff;font-size:21px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(–sh);transition:all 0.15s}
 .nav-btn:disabled{opacity:0.25}
 .nav-btn:active{transform:scale(0.92)}
-.nav-counter{font-family:'Playfair Display',serif;font-size:14px;color:var(--muted);flex:1;text-align:center}
+.nav-counter{font-family:‘Playfair Display’,serif;font-size:14px;color:var(–muted);flex:1;text-align:center}
 .strip{display:flex;gap:6px;overflow-x:auto;padding:3px 2px 10px;margin-bottom:14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .strip::-webkit-scrollbar{display:none}
-.strip-cell{flex-shrink:0;width:60px;cursor:pointer;border-radius:7px;overflow:hidden;border:2.5px solid transparent;transition:border 0.15s;background:var(--light)}
-.strip-cell.active{border-color:var(--gold2)}
-.strip-cell.err{border-color:var(--err);opacity:0.6}
+.strip-cell{flex-shrink:0;width:60px;cursor:pointer;border-radius:7px;overflow:hidden;border:2.5px solid transparent;transition:border 0.15s;background:var(–light)}
+.strip-cell.active{border-color:var(–gold2)}
 .strip-cell img{width:60px;height:60px;object-fit:cover;display:block}
-.strip-num{text-align:center;font-size:10px;color:var(--muted);padding:2px 0 3px;font-family:'Playfair Display',serif}
+.strip-num{text-align:center;font-size:10px;color:var(–muted);padding:2px 0 3px;font-family:‘Playfair Display’,serif}
 
-/* Notices */
 .notice{padding:11px 15px;border-radius:9px;font-size:13px;line-height:1.6;margin-bottom:13px}
 .notice-warn{background:#fff8e6;border:1px solid #e8c84a;color:#7a5a00}
 .notice-info{background:#f0f5ff;border:1px solid #b0c4f0;color:#2a3d6a}
 .notice-ok  {background:#f0faf4;border:1px solid #7dd4a0;color:#1a4f30}
 .notice-err {background:#fff0ee;border:1px solid #f0a090;color:#7a1a10}
 
-/* Download */
 .dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.dl-btn{padding:14px 9px;border-radius:11px;border:1.5px solid var(--light);background:var(--paper);text-align:center;cursor:pointer;transition:background 0.15s}
-.dl-btn:active{background:var(--light)}
+.dl-btn{padding:14px 9px;border-radius:11px;border:1.5px solid var(–light);background:var(–paper);text-align:center;cursor:pointer;transition:background 0.15s}
+.dl-btn:active{background:var(–light)}
 .dl-icon{font-size:21px;display:block;margin-bottom:3px}
-.dl-label{font-size:11.5px;color:var(--muted);line-height:1.4}
+.dl-label{font-size:11.5px;color:var(–muted);line-height:1.4}
 
-/* Check rows */
-.check-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--light);font-size:13.5px}
+.check-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(–light);font-size:13.5px}
 .check-row:last-child{border-bottom:none}
-.ok-t{color:var(--ok);font-size:12.5px}
+.ok-t{color:var(–ok);font-size:12.5px}
 .warn-t{color:#b07800;font-size:12.5px}
-.err-t{color:var(--err);font-size:12.5px}
+.err-t{color:var(–err);font-size:12.5px}
 
-/* Job list */
-.job-item{padding:12px 14px;border:1px solid var(--light);border-radius:9px;margin-bottom:8px;cursor:pointer;background:#fff;transition:border 0.15s}
-.job-item:active{border-color:var(--gold2)}
-.job-meta{display:flex;justify-content:space-between;align-items:center}
-.job-status{font-size:12px;padding:3px 10px;border-radius:12px;font-family:'Playfair Display',serif;font-weight:700}
-.job-status.done{background:rgba(45,122,79,0.12);color:var(--ok)}
-.job-status.running{background:rgba(184,145,42,0.12);color:var(--gold)}
-.job-status.error{background:rgba(192,57,43,0.1);color:var(--err)}
-.job-date{font-size:11px;color:var(--muted);font-style:italic}
-.job-progress{font-size:12px;color:var(--muted);margin-top:4px}
+.save-tip{background:var(–ink);color:#c8b99a;border-radius:var(–r);padding:15px 17px;margin-bottom:14px;font-size:13px;line-height:1.7}
+.save-tip strong{color:var(–gold2)}
 
-/* Save tip */
-.save-tip{background:var(--ink);color:#c8b99a;border-radius:var(--r);padding:15px 17px;margin-bottom:14px;font-size:13px;line-height:1.7}
-.save-tip strong{color:var(--gold2)}
+.video-status{font-size:13px;color:var(–warm);font-style:italic;margin-top:10px;min-height:18px}
 </style>
+
 </head>
 <body>
 
 <header class="hdr">
   <div class="hdr-eye">✦ AI Eventyrbok ✦</div>
   <h1 class="hdr-title">StoryBook AI</h1>
-  <p class="hdr-sub">Automatisk bildebok — kom tilbake når det er ferdig</p>
+  <p class="hdr-sub">Automatisk bildebok — lukk appen og kom tilbake</p>
   <div class="status-pill chk" id="pill">
     <div class="pdot"></div>
     <span id="pillTxt">Sjekker…</span>
@@ -194,24 +164,21 @@ textarea{resize:vertical;line-height:1.7}
 // ═══════════════════════════════════════
 const S = {
   step: 0,
-  // Config
   apiKey:   localStorage.getItem('oai_key')  || '',
   antKey:   localStorage.getItem('ant_key')  || '',
-  // Characters & objects
-  characters: [],  // {id:'01', name, description, dataUrl}
-  objects:    [],  // {id:'01', name, description, dataUrl}
-  // Story & markup
-  markup:       '',
   masterPrompt: '',
-  parsedPages:  [],  // after parse
-  // Active job
-  jobId:     localStorage.getItem('job_id') || null,
-  jobData:   null,
-  polling:   null,
-  // Viewer
-  curPage:   0,
-  speaking:  false,
-  rerunPages: new Set(),
+  characters: [],
+  objects:    [],
+  manus:        '',
+  beskrivelse:  '',
+  parsedPages:  [],
+  jobId:   localStorage.getItem('job_id') || null,
+  jobData: null,
+  polling: null,
+  curPage:  0,
+  speaking: false,
+  rerunSet: new Set(),
+  videoStatus: '',
 };
 
 const STEPS = [
@@ -222,54 +189,73 @@ const STEPS = [
   {icon:'📚', label:'Visning'},
 ];
 
-// ═══════════════════════════════════════
-//  BACKEND
-// ═══════════════════════════════════════
-function baseUrl() {
-  // When served from the same server, use relative URLs
-  return window.location.origin;
-}
+function base() { return window.location.origin; }
 
-async function checkBackend() {
-  try {
-    const r = await fetch(baseUrl()+'/health',{signal:AbortSignal.timeout(5000)});
-    const d = await r.json();
-    return d.ok === true;
-  } catch { return false; }
-}
-
+// ═══════════════════════════════════════
+//  BACKEND CHECK
+// ═══════════════════════════════════════
 async function updatePill() {
-  const pill = document.getElementById('pill');
-  const txt  = document.getElementById('pillTxt');
-  const ok = await checkBackend();
-  pill.className = `status-pill ${ok?'ok':'err'}`;
-  txt.textContent = ok ? 'Backend tilkoblet ✓' : 'Finner ikke backend';
-  return ok;
+  const pill=document.getElementById('pill'), txt=document.getElementById('pillTxt');
+  try {
+    const r = await fetch(base()+'/health',{signal:AbortSignal.timeout(5000)});
+    const d = await r.json();
+    if (d.ok) { pill.className='status-pill ok'; txt.textContent='Backend tilkoblet ✓'; return true; }
+  } catch(_) {}
+  pill.className='status-pill err'; txt.textContent='Finner ikke backend';
+  return false;
 }
 
 // ═══════════════════════════════════════
-//  JOB POLLING
+//  POLLING
 // ═══════════════════════════════════════
 function startPolling(jobId) {
   if (S.polling) clearInterval(S.polling);
   S.jobId = jobId;
   localStorage.setItem('job_id', jobId);
   S.polling = setInterval(async () => {
-    await fetchJobData(jobId);
-    if (S.jobData?.status === 'done' || S.jobData?.status === 'error') {
-      clearInterval(S.polling);
-      S.polling = null;
+    await fetchJob(jobId);
+    if (S.step===3) renderMain();
+    if (S.jobData?.status==='done'||S.jobData?.status==='error') {
+      clearInterval(S.polling); S.polling=null;
     }
-    if (S.step === 3) renderMain();
   }, 4000);
 }
 
-async function fetchJobData(jobId) {
+async function fetchJob(jobId) {
   if (!jobId) return;
+  try { const r=await fetch(base()+`/jobs/${jobId}`); S.jobData=await r.json(); } catch(_) {}
+}
+
+// ═══════════════════════════════════════
+//  PARSE
+// ═══════════════════════════════════════
+async function parsePages() {
+  if (!S.manus.trim()) return;
   try {
-    const r = await fetch(baseUrl()+`/jobs/${jobId}`);
-    S.jobData = await r.json();
-  } catch (_) {}
+    const r = await fetch(base()+'/parse', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ manus:S.manus, beskrivelse:S.beskrivelse, characters:S.characters, objects:S.objects }),
+    });
+    const d = await r.json();
+    S.parsedPages = d.pages || [];
+  } catch(_) {
+    // Client fallback
+    S.parsedPages = clientParse();
+  }
+  renderMain();
+}
+
+function clientParse() {
+  const pages = [];
+  const sections = S.manus.split(/(?=#p\d+)/i).filter(s=>s.trim());
+  for (const sec of sections) {
+    const lines = sec.trim().split('\n').map(l=>l.trim()).filter(Boolean);
+    if (!lines.length) continue;
+    const pm = lines[0].match(/#p(\d+)/i);
+    if (!pm) continue;
+    pages.push({ pageNum:parseInt(pm[1]), storyText:lines.slice(1).join(' ').trim(), charRefs:[], objRefs:[], scene:'', visualDesc:'' });
+  }
+  return pages.sort((a,b)=>a.pageNum-b.pageNum);
 }
 
 // ═══════════════════════════════════════
@@ -277,184 +263,201 @@ async function fetchJobData(jobId) {
 // ═══════════════════════════════════════
 async function startJob() {
   const cost = (S.parsedPages.length * 0.065).toFixed(2);
-  if (!confirm(`Generere ${S.parsedPages.length} bilder?\nEstimert kostnad: $${cost}\n\nJobben kjører i bakgrunnen — du kan lukke appen og komme tilbake.`)) return;
+  if (!confirm(`Generere ${S.parsedPages.length} bilder?\nEstimert kostnad: $${cost}\n\nJobben kjører i bakgrunnen — du kan lukke appen.`)) return;
 
   const form = new FormData();
   form.append('openaiKey',    S.apiKey);
   form.append('masterPrompt', S.masterPrompt);
-  form.append('markup',       S.markup);
+  form.append('manus',        S.manus);
+  form.append('beskrivelse',  S.beskrivelse);
   form.append('pagesJson',    JSON.stringify(S.parsedPages));
   form.append('characters',   JSON.stringify(S.characters.map(c=>({id:c.id,name:c.name,description:c.description}))));
   form.append('objects',      JSON.stringify(S.objects.map(o=>({id:o.id,name:o.name,description:o.description}))));
 
-  // Attach character images named c01_name.png etc
   for (const c of S.characters) {
-    if (c.dataUrl) {
-      const blob = dataUrlToBlob(c.dataUrl);
-      form.append('charImages', blob, `c${c.id}_${c.name}.png`);
-    }
+    if (c.dataUrl) form.append('charImages', dataUrlToBlob(c.dataUrl), `c${c.id}_${c.name}.png`);
   }
   for (const o of S.objects) {
-    if (o.dataUrl) {
-      const blob = dataUrlToBlob(o.dataUrl);
-      form.append('objImages', blob, `o${o.id}_${o.name}.png`);
-    }
+    if (o.dataUrl) form.append('objImages', dataUrlToBlob(o.dataUrl), `o${o.id}_${o.name}.png`);
   }
 
   try {
-    const r = await fetch(baseUrl()+'/jobs', {method:'POST', body:form});
+    const r = await fetch(base()+'/jobs',{method:'POST',body:form});
     const d = await r.json();
     if (d.error) { alert('Feil: '+d.error); return; }
     startPolling(d.jobId);
-    S.step = 3;
-    render();
-  } catch(err) {
-    alert('Feil ved oppstart: '+err.message);
-  }
+    S.step=3; render();
+  } catch(err) { alert('Feil: '+err.message); }
 }
 
 async function rerunPages() {
-  if (!S.jobId || !S.rerunPages.size) return;
-  const nums = [...S.rerunPages];
+  if (!S.jobId||!S.rerunSet.size) return;
+  const nums = [...S.rerunSet];
   if (!confirm(`Kjør side ${nums.join(', ')} på nytt?`)) return;
   try {
-    await fetch(baseUrl()+`/jobs/${S.jobId}/rerun`, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({pageNums: nums}),
+    await fetch(base()+`/jobs/${S.jobId}/rerun`,{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({pageNums:nums}),
     });
-    S.rerunPages.clear();
-    startPolling(S.jobId);
-    render();
+    S.rerunSet.clear();
+    startPolling(S.jobId); render();
   } catch(err) { alert('Feil: '+err.message); }
 }
 
 // ═══════════════════════════════════════
-//  MARKUP & PARSE
+//  IMAGE URL
 // ═══════════════════════════════════════
-async function parseMarkup() {
-  if (!S.markup.trim()) return;
-  try {
-    const r = await fetch(baseUrl()+'/parse', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({markup:S.markup, characters:S.characters, objects:S.objects}),
-    });
-    const d = await r.json();
-    S.parsedPages = d.pages || [];
-    renderMain();
-  } catch(_) {
-    // fallback client-side parse
-    S.parsedPages = clientParse(S.markup);
-    renderMain();
-  }
+function imgUrl(jobId, pageNum) {
+  return base()+`/image/${jobId}/${pageNum}?t=${Date.now()}`;
 }
 
-async function suggestDescriptions() {
-  if (!S.antKey) { alert('Legg inn Anthropic API-nøkkel i oppsett for AI-forslag'); return; }
-  try {
-    const r = await fetch(baseUrl()+'/suggest', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({pages:S.parsedPages, characters:S.characters, objects:S.objects, anthropicKey:S.antKey}),
-    });
-    const d = await r.json();
-    if (d.suggestions) {
-      for (const s of d.suggestions) {
-        const page = S.parsedPages.find(p=>p.pageNum===s.pageNum);
-        if (page) {
-          page.visualDesc = s.visualDesc;
-          if (s.charRefs?.length) page.charRefs = s.charRefs;
-          if (s.objRefs?.length)  page.objRefs  = s.objRefs;
-        }
-      }
-      renderMain();
+// ═══════════════════════════════════════
+//  VOICE
+// ═══════════════════════════════════════
+function speak(text) {
+  if (S.speaking) { speechSynthesis.cancel(); S.speaking=false; render(); return; }
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='nb-NO'; u.rate=0.88; u.pitch=1.05;
+  u.onend=()=>{S.speaking=false;render();};
+  S.speaking=true; render();
+  speechSynthesis.speak(u);
+}
+
+// ═══════════════════════════════════════
+//  VIDEO EXPORT
+// ═══════════════════════════════════════
+async function makeVideo(withSpeech) {
+  const results = Object.values(S.jobData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
+  if (!results.length) return;
+
+  S.videoStatus = 'Laster bilder…'; renderMain();
+
+  // Pre-load all images
+  const loadedImages = await Promise.all(results.map(r => new Promise((res,rej) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => res(img);
+    img.onerror = () => res(null);
+    img.src = imgUrl(S.jobId, r.pageNum);
+  })));
+
+  S.videoStatus = 'Lager video…'; renderMain();
+
+  const canvas = document.createElement('canvas');
+  canvas.width = 1024; canvas.height = 1024;
+  const ctx = canvas.getContext('2d');
+  const stream = canvas.captureStream(1);
+  const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
+  const rec = new MediaRecorder(stream, {mimeType: mime});
+  const chunks = [];
+  rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+  rec.onstop = () => {
+    const blob = new Blob(chunks, {type:'video/webm'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'eventyrbok.webm';
+    a.click();
+    S.videoStatus = 'Video klar! ✓'; renderMain();
+    setTimeout(()=>{S.videoStatus='';renderMain();}, 3000);
+  };
+
+  rec.start();
+
+  for (let i=0; i<results.length; i++) {
+    const r = results[i];
+    const img = loadedImages[i];
+
+    S.videoStatus = `Side ${r.pageNum} av ${results.length}…`; renderMain();
+
+    // Draw image
+    ctx.clearRect(0,0,1024,1024);
+    if (img) {
+      ctx.drawImage(img, 0,0,1024,1024);
+    } else {
+      ctx.fillStyle = '#1a1520';
+      ctx.fillRect(0,0,1024,1024);
     }
-  } catch(err) { alert('Feil: '+err.message); }
+
+    // Draw text overlay
+    const grad = ctx.createLinearGradient(0,700,0,1024);
+    grad.addColorStop(0,'rgba(0,0,0,0)'); grad.addColorStop(0.3,'rgba(0,0,0,0.65)'); grad.addColorStop(1,'rgba(0,0,0,0.9)');
+    ctx.fillStyle=grad; ctx.fillRect(0,700,1024,324);
+    ctx.fillStyle='rgba(184,145,42,0.92)';
+    ctx.beginPath(); ctx.roundRect(22,984,62,26,13); ctx.fill();
+    ctx.fillStyle='#fff'; ctx.font='bold 13px Georgia,serif'; ctx.textAlign='center';
+    ctx.fillText(`${r.pageNum}/${results.length}`,53,1001);
+    ctx.font='22px Georgia,serif'; ctx.shadowColor='rgba(0,0,0,0.85)'; ctx.shadowBlur=6;
+    const words=(r.storyText||'').split(' '),lines=[];let line='';
+    for(const w of words){const t=line+w+' ';if(ctx.measureText(t).width>950&&line){lines.push(line.trim());line=w+' ';}else line=t;}
+    if(line.trim())lines.push(line.trim());
+    const shown=lines.slice(0,5),sy=752+Math.max(0,(5-shown.length)*17);
+    shown.forEach((l,li)=>ctx.fillText(l,512,sy+li*34));
+
+    // Wait — duration per slide
+    // If speech: wait for utterance to finish
+    if (withSpeech && r.storyText) {
+      await new Promise(res => {
+        const u = new SpeechSynthesisUtterance(r.storyText);
+        u.lang='nb-NO'; u.rate=0.88;
+        u.onend = res; u.onerror = res;
+        speechSynthesis.speak(u);
+        // Fallback timeout in case speech stalls
+        setTimeout(res, 8000);
+      });
+    } else {
+      await new Promise(res => setTimeout(res, 3500));
+    }
+  }
+
+  rec.stop();
 }
 
-function clientParse(markup) {
-  const sections = markup.split(/(?=#p\d+)/i).filter(s=>s.trim());
-  return sections.map((sec, idx) => {
-    const lines = sec.trim().split('\n').map(l=>l.trim()).filter(Boolean);
-    if (!lines.length) return null;
-    const first = lines[0];
-    const pm = first.match(/#p(\d+)/i);
-    if (!pm) return null;
-    const charRefs = [...first.matchAll(/#c(\d+)/gi)].map(m=>m[1].padStart(2,'0'));
-    const objRefs  = [...first.matchAll(/#o(\d+)/gi)].map(m=>m[1].padStart(2,'0'));
-    const visualDesc = first.replace(/#[pco]\d+/gi,'').trim();
-    const storyText  = lines.slice(1).join(' ').trim();
-    return {pageNum:parseInt(pm[1]), charRefs, objRefs, visualDesc, storyText,
-      usedChars: charRefs.map(id=>S.characters.find(c=>c.id===id)).filter(Boolean),
-      usedObjs:  objRefs.map(id=>S.objects.find(o=>o.id===id)).filter(Boolean)};
-  }).filter(Boolean);
+// ═══════════════════════════════════════
+//  DOWNLOAD ZIP
+// ═══════════════════════════════════════
+async function dlZip() {
+  if (!window.JSZip) {
+    const s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+    await new Promise(res=>{s.onload=res;document.head.appendChild(s);});
+  }
+  const results = Object.values(S.jobData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
+  const zip = new window.JSZip(), folder = zip.folder('eventyrbok');
+  folder.file('historien.txt', results.map(r=>`Side ${r.pageNum}:\n${r.storyText}`).join('\n\n---\n\n'));
+
+  S.videoStatus = 'Laster ned bilder…'; renderMain();
+  for (const r of results) {
+    try {
+      const resp = await fetch(imgUrl(S.jobId, r.pageNum));
+      const buf  = await resp.arrayBuffer();
+      folder.file(`side_${String(r.pageNum).padStart(2,'0')}.png`, buf);
+    } catch(_) {}
+  }
+  const blob = await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='eventyrbok.zip'; a.click();
+  S.videoStatus = ''; renderMain();
 }
 
 // ═══════════════════════════════════════
 //  HELPERS
 // ═══════════════════════════════════════
 function dataUrlToBlob(dataUrl) {
-  const [h,d]=dataUrl.split(','), mime=h.match(/:(.*?);/)[1];
-  const bin=atob(d), arr=new Uint8Array(bin.length);
+  const [h,d]=dataUrl.split(','),mime=h.match(/:(.*?);/)[1];
+  const bin=atob(d),arr=new Uint8Array(bin.length);
   for(let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
   return new Blob([arr],{type:mime});
 }
 
-function addImages(files, targetArr, idPrefix, render_fn) {
+function addImages(files, arr, prefix) {
   const readers = Array.from(files).map(f=>new Promise(res=>{
     const r=new FileReader(); r.onload=()=>res({name:f.name,dataUrl:r.result}); r.readAsDataURL(f);
   }));
   Promise.all(readers).then(imgs=>{
     imgs.forEach((img,i)=>{
-      const nextId = String(targetArr.length+i+1).padStart(2,'0');
-      targetArr.push({id:nextId, name:`${idPrefix}${nextId}`, description:'', dataUrl:img.dataUrl});
+      const id = String(arr.length+i+1).padStart(2,'0');
+      arr.push({id, name:`${prefix}${id}`, description:'', dataUrl:img.dataUrl});
     });
-    render_fn();
-  });
-}
-
-function speak(text) {
-  if(S.speaking){speechSynthesis.cancel();S.speaking=false;render();return;}
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang='nb-NO';u.rate=0.88;u.onend=()=>{S.speaking=false;render();};
-  S.speaking=true;render();speechSynthesis.speak(u);
-}
-
-async function dlZip(withText) {
-  if(!window.JSZip){const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';await new Promise(res=>{s.onload=res;document.head.appendChild(s);});}
-  const zip=new window.JSZip(), folder=zip.folder('eventyrbok');
-  const results = Object.values(S.jobData?.results||{}).filter(r=>r.status==='done');
-  folder.file('historien.txt', results.map(r=>`Side ${r.pageNum}:\n${r.storyText}`).join('\n\n---\n\n'));
-  for(const r of results){
-    const src = withText ? await burnText(r.b64, r.storyText, r.pageNum, results.length) : 'data:image/png;base64,'+r.b64;
-    folder.file(`side_${String(r.pageNum).padStart(2,'0')}.png`, src.split(',')[1],{base64:true});
-  }
-  const blob=await zip.generateAsync({type:'blob'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='eventyrbok.zip';a.click();
-}
-
-function burnText(b64,text,num,total){
-  return new Promise(res=>{
-    const c=document.createElement('canvas');c.width=1024;c.height=1024;
-    const ctx=c.getContext('2d'),img=new Image();
-    img.onload=()=>{
-      ctx.drawImage(img,0,0,1024,1024);
-      const g=ctx.createLinearGradient(0,700,0,1024);
-      g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(0.3,'rgba(0,0,0,0.65)');g.addColorStop(1,'rgba(0,0,0,0.9)');
-      ctx.fillStyle=g;ctx.fillRect(0,700,1024,324);
-      ctx.fillStyle='rgba(184,145,42,0.92)';ctx.beginPath();ctx.roundRect(22,984,60,26,13);ctx.fill();
-      ctx.fillStyle='#fff';ctx.font='bold 13px Georgia,serif';ctx.textAlign='center';ctx.fillText(`${num}/${total}`,52,1001);
-      ctx.font='22px Georgia,serif';ctx.shadowColor='rgba(0,0,0,0.85)';ctx.shadowBlur=6;
-      const words=text.split(' '),lines=[];let line='';
-      for(const w of words){const t=line+w+' ';if(ctx.measureText(t).width>950&&line){lines.push(line.trim());line=w+' ';}else line=t;}
-      if(line.trim())lines.push(line.trim());
-      const shown=lines.slice(0,5),sy=752+Math.max(0,(5-shown.length)*17);
-      shown.forEach((l,i)=>ctx.fillText(l,512,sy+i*34));
-      res(c.toDataURL('image/png'));
-    };
-    img.onerror=()=>res('data:image/png;base64,'+b64);
-    img.src='data:image/png;base64,'+b64;
+    render();
   });
 }
 
@@ -491,65 +494,37 @@ function renderSetup(){return `
     <input type="password" value="${esc(S.apiKey)}" placeholder="sk-proj-…"
       oninput="S.apiKey=this.value;localStorage.setItem('oai_key',this.value)">
     <p class="hint">Brukes til bildegenerering med gpt-image-1</p>
-    <label class="lbl" style="margin-top:13px">Anthropic API-nøkkel (valgfritt)</label>
+    <label class="lbl" style="margin-top:13px">Anthropic API-nøkkel (valgfritt — for AI-forslag)</label>
     <input type="password" value="${esc(S.antKey)}" placeholder="sk-ant-…"
       oninput="S.antKey=this.value;localStorage.setItem('ant_key',this.value)">
-    <p class="hint">Brukes til å foreslå bildebeskrivelser automatisk</p>
   </div>
   <div class="card">
     <div class="card-title">🎨 Bildestil</div>
     <label class="lbl">Master bildeprompt</label>
-    <textarea rows="4" placeholder="F.eks: High-end cinematic 3D children's book illustration, Pixar style, soft warm colors…"
+    <textarea rows="4" class="mono" placeholder="High-end cinematic 3D children's book illustration, Pixar style, soft warm colors…"
       oninput="S.masterPrompt=this.value">${esc(S.masterPrompt)}</textarea>
-    <p class="hint">Gjelder alle bildene. Kun stil — ikke karakterer eller handling.</p>
+
+```
+<p class="hint">Kun stil og atmosfære — ikke karakterer eller handling.</p>
+```
+
   </div>
-  ${S.jobId?`
-  <div class="card">
-    <div class="card-title">📋 Tidligere jobber</div>
-    <button class="btn btn-ghost btn-small" onclick="S.step=3;fetchJobData(S.jobId).then(()=>render())">
-      Gå tilbake til pågående jobb →
-    </button>
+  ${S.jobId?`<div class="card"><div class="card-title">📋 Pågående jobb</div>
+    <button class="btn btn-ghost btn-small" onclick="S.step=3;fetchJob(S.jobId).then(()=>render())">Gå tilbake til jobb →</button>
   </div>`:''}
-  <button class="btn btn-primary" ${!S.apiKey?'disabled':''} onclick="S.step=1;render()">
-    Neste: Karakterer →
-  </button>`;}
+  <button class="btn btn-primary" ${!S.apiKey?'disabled':''} onclick="S.step=1;render()">Neste: Karakterer →</button>`;}
 
 // ── Step 1: Characters ──
 function renderChars(){
-  const charItems = S.characters.map((c,i)=>`
-    <div class="char-item">
-      ${c.dataUrl?`<img class="char-thumb" src="${c.dataUrl}">`:`<div class="char-thumb-empty">👤</div>`}
-      <div class="char-info">
-        <div class="char-id">#c${c.id}</div>
-        <input type="text" value="${esc(c.name)}" placeholder="Navn"
-          style="margin-bottom:5px;font-size:13px;padding:7px 10px"
-          oninput="S.characters[${i}].name=this.value">
-        <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Utseende: hår, øyne, klær, kropp…"
-          oninput="S.characters[${i}].description=this.value">${esc(c.description)}</textarea>
-      </div>
-      <button class="btn-danger btn btn-small" style="width:auto;padding:6px 10px;font-size:12px;flex-shrink:0"
-        onclick="S.characters.splice(${i},1);S.characters.forEach((c,j)=>c.id=String(j+1).padStart(2,'0'));render()">✕</button>
-    </div>`).join('');
+const charItems = S.characters.map((c,i)=>` <div class="char-item"> ${c.dataUrl?`<img class="char-thumb" src="${c.dataUrl}">`:`<div class="char-thumb-empty">👤</div>`} <div class="char-info"> <div class="char-id">#c${c.id}</div> <input type="text" value="${esc(c.name)}" placeholder="Navn" style="margin-bottom:5px;font-size:13px;padding:7px 10px" oninput="S.characters[${i}].name=this.value"> <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Utseende: hår, øyne, klær, kropp…" oninput="S.characters[${i}].description=this.value">${esc(c.description)}</textarea> </div> <button class="btn btn-danger btn-small" style="width:auto;padding:6px 10px;flex-shrink:0" onclick="S.characters.splice(${i},1);S.characters.forEach((c,j)=>c.id=String(j+1).padStart(2,'0'));render()">✕</button> </div>`).join(’’);
 
-  const objItems = S.objects.map((o,i)=>`
-    <div class="char-item">
-      ${o.dataUrl?`<img class="char-thumb" src="${o.dataUrl}">`:`<div class="char-thumb-empty">🎁</div>`}
-      <div class="char-info">
-        <div class="char-id" style="color:var(--muted)">#o${o.id}</div>
-        <input type="text" value="${esc(o.name)}" placeholder="Navn (hus, tryllestav…)"
-          style="margin-bottom:5px;font-size:13px;padding:7px 10px"
-          oninput="S.objects[${i}].name=this.value">
-        <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Beskriv objektet…"
-          oninput="S.objects[${i}].description=this.value">${esc(o.description)}</textarea>
-      </div>
-      <button class="btn-danger btn btn-small" style="width:auto;padding:6px 10px;font-size:12px;flex-shrink:0"
-        onclick="S.objects.splice(${i},1);S.objects.forEach((o,j)=>o.id=String(j+1).padStart(2,'0'));render()">✕</button>
-    </div>`).join('');
+const objItems = S.objects.map((o,i)=>` <div class="char-item"> ${o.dataUrl?`<img class="char-thumb" src="${o.dataUrl}">`:`<div class="char-thumb-empty">🎁</div>`} <div class="char-info"> <div class="char-id" style="color:var(--muted)">#o${o.id}</div> <input type="text" value="${esc(o.name)}" placeholder="Navn (hus, tryllestav…)" style="margin-bottom:5px;font-size:13px;padding:7px 10px" oninput="S.objects[${i}].name=this.value"> <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Beskriv objektet/stedet…" oninput="S.objects[${i}].description=this.value">${esc(o.description)}</textarea> </div> <button class="btn btn-danger btn-small" style="width:auto;padding:6px 10px;flex-shrink:0" onclick="S.objects.splice(${i},1);S.objects.forEach((o,j)=>o.id=String(j+1).padStart(2,'0'));render()">✕</button> </div>`).join(’’);
 
-  return `
+return `
+
   <div class="card">
     <div class="card-title">👤 Karakterer</div>
-    ${charItems||'<p class="hint" style="margin-bottom:12px">Ingen karakterer ennå</p>'}
+    ${charItems||'<p class="hint" style="margin-bottom:12px">Ingen ennå</p>'}
     <input type="file" id="charFile" accept="image/*" multiple style="display:none">
     <button class="btn btn-ghost btn-small" onclick="document.getElementById('charFile').click()">+ Legg til karakter</button>
   </div>
@@ -566,45 +541,50 @@ function renderChars(){
 
 // ── Step 2: Manus ──
 function renderManus(){
-  const charRef = S.characters.map(c=>`<code>#c${c.id}</code> = ${esc(c.name)}`).join('  ');
-  const objRef  = S.objects.map(o=>`<code>#o${o.id}</code> = ${esc(o.name)}`).join('  ');
+const charCodes = S.characters.map(c=>`<span class="tag">#c${c.id}</span> ${esc(c.name)}`).join(’  ‘);
+const objCodes  = S.objects.map(o=>`<span class="tag">#o${o.id}</span> ${esc(o.name)}`).join(’  ’);
 
-  const pageEditors = S.parsedPages.map((p,i)=>`
-    <div class="page-editor">
-      <div class="page-editor-header">
-        <span class="page-num">SIDE ${p.pageNum}</span>
-        <span class="page-refs">${[...p.charRefs.map(r=>'#c'+r),...p.objRefs.map(r=>'#o'+r)].join(' ')||'ingen refs'}</span>
-      </div>
-      <div class="page-editor-body">
-        <textarea class="page-visual" rows="2"
-          placeholder="#c01 gjør noe visuelt spesifikt…"
-          oninput="S.parsedPages[${i}].visualDesc=this.value">${esc(p.visualDesc)}</textarea>
-        ${p.storyText?`<div class="page-story">${esc(p.storyText.slice(0,120))}${p.storyText.length>120?'…':''}</div>`:''}
-      </div>
-    </div>`).join('');
+const previewRows = S.parsedPages.map(p=>` <tr> <td>#p${String(p.pageNum).padStart(3,'0')}</td> <td>${p.charRefs.map(r=>`<span class="tag">#c${r}</span>`).join('')}${p.objRefs.map(r=>`<span class="tag">#o${r}</span>`).join('')}</td> <td><span class="tag tag-sc">${esc(p.scene.slice(0,30))||'—'}</span></td> <td>${esc((p.visualDesc||p.suggestedVisual||'').slice(0,50))}${(p.visualDesc||'').length>50?'…':''}</td> </tr>`).join(’’);
 
-  return `
+return `
+
   <div class="card">
     <div class="card-title">📖 Manus</div>
-    <div class="markup-help">
+    <textarea id="manusInput" rows="10" class="mono"
+      placeholder="#p001&#10;Det var en gang en liten drage som het Snufselufs.&#10;&#10;#p002&#10;Når den prøvde å lande, sa det BOMP."
+      oninput="S.manus=this.value">${esc(S.manus)}</textarea>
+    <p class="hint">Én linje med <code style="background:rgba(184,145,42,0.12);padding:1px 5px;border-radius:4px">#p001</code> per side, deretter historieteksten.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎬 Bildbeskrivelser</div>
+    <div style="background:#f8f4ec;border:1px solid var(--light);border-radius:9px;padding:12px;margin-bottom:12px;font-size:12px;color:var(--muted);line-height:1.8">
       <strong>Format:</strong><br>
-      <code>#p001 #c01 #c02</code> visuell beskrivelse av bildet<br>
-      Historietekst som vises på siden<br><br>
-      ${charRef?charRef+'<br>':''}${objRef||''}
+      <code style="background:rgba(184,145,42,0.12);padding:1px 5px;border-radius:4px;font-size:11px">#p001 #c01 #sc solrik eng, dag #/ Snufselufs lander klossete med glitter overalt</code><br>
+      <code style="background:rgba(184,145,42,0.12);padding:1px 5px;border-radius:4px;font-size:11px">#p005 #c01 #c02 #/ Eva og Snufselufs møtes — ingen ny scene, arver forrige</code><br><br>
+      <strong>#sc</strong> varer til neste #sc &nbsp;·&nbsp; <strong>#/</strong> starter bildeteksten &nbsp;·&nbsp; <strong>#c</strong> arves ikke<br>
+      ${charCodes?charCodes+'<br>':''}${objCodes||''}
     </div>
-    <textarea rows="12" style="font-family:monospace;font-size:13px;line-height:1.6"
-      placeholder="#p001 #c01&#10;Det var en gang en liten drage som het Snufselufs.&#10;&#10;#p002 #c01&#10;Når den prøvde å lande, sa det BOMP."
-      oninput="S.markup=this.value">${esc(S.markup)}</textarea>
+    <textarea id="beskrivelseInput" rows="10" class="mono"
+      placeholder="#p001 #c01 #sc solrik sommereng, dag, blå himmel #/ Snufselufs sitter på en sky&#10;#p002 #c01 #/ Snufselufs dundrer i bakken, rosa glitter overalt"
+      oninput="S.beskrivelse=this.value">${esc(S.beskrivelse)}</textarea>
+    <p class="hint">Sider uten beskrivelse her får automatisk foreslått visuell tekst.</p>
     <div class="btn-row" style="margin-top:10px">
-      <button class="btn btn-ghost btn-small" onclick="parseMarkup()">↻ Les manus</button>
-      ${S.antKey?`<button class="btn btn-ghost btn-small" onclick="suggestDescriptions()">✨ Foreslå beskrivelser</button>`:''}
+      <button class="btn btn-ghost btn-small" onclick="parsePages()">↻ Forhåndsvis</button>
+      ${S.antKey?`<button class="btn btn-ghost btn-small" onclick="runAISuggest()">✨ AI-forslag</button>`:''}
     </div>
   </div>
 
-  ${S.parsedPages.length?`
+${S.parsedPages.length?`
+
   <div class="card">
-    <div class="card-title">Rediger bildet per side — ${S.parsedPages.length} sider</div>
-    ${pageEditors}
+    <div class="card-title">Forhåndsvisning — ${S.parsedPages.length} sider</div>
+    <div style="overflow-x:auto">
+      <table class="preview-table">
+        <thead><tr><th>Side</th><th>Karakterer</th><th>Scene</th><th>Visuell beskrivelse</th></tr></thead>
+        <tbody>${previewRows}</tbody>
+      </table>
+    </div>
   </div>`:''}
 
   <div class="btn-row">
@@ -612,122 +592,148 @@ function renderManus(){
     <button class="btn btn-ghost" ${!S.parsedPages.length?'disabled':''} onclick="S.step=3;render()">Neste: Generer →</button>
   </div>`;}
 
+async function runAISuggest() {
+if (!S.antKey) return;
+if (!S.parsedPages.length) await parsePages();
+try {
+const r = await fetch(base()+’/suggest’, {
+method:‘POST’, headers:{‘Content-Type’:‘application/json’},
+body: JSON.stringify({pages:S.parsedPages, characters:S.characters, objects:S.objects, anthropicKey:S.antKey}),
+});
+const d = await r.json();
+if (d.error) { alert(’AI-forslag feilet: ’+d.error); return; }
+if (d.suggestions) {
+for (const s of d.suggestions) {
+const p = S.parsedPages.find(x=>x.pageNum===s.pageNum);
+if (p && !p.visualDesc) p.suggestedVisual = s.visualDesc;
+}
+renderMain();
+}
+} catch(err) { alert(’Feil: ’+err.message); }
+}
+
 // ── Step 3: Generate ──
 function renderGenerate(){
-  const job = S.jobData;
-  const results = job ? Object.values(job.results||{}).sort((a,b)=>a.pageNum-b.pageNum) : [];
-  const done    = results.filter(r=>r.status==='done').length;
-  const total   = job?.pageCount || S.parsedPages.length || 0;
-  const pct     = total>0 ? Math.round((job?.progress||0)/total*100) : 0;
-  const isRunning = job?.status==='running'||job?.status==='queued';
+const job = S.jobData;
+const results = job ? Object.values(job.results||{}).sort((a,b)=>a.pageNum-b.pageNum) : [];
+const done    = results.filter(r=>r.status===‘done’).length;
+const total   = job?.pageCount || S.parsedPages.length || 0;
+const pct     = total>0 ? Math.round((job?.progress||0)/total*100) : 0;
+const running = job?.status===‘running’||job?.status===‘queued’;
 
-  const cells = Array.from({length:total},(_,i)=>{
-    const pageNum = i+1;
-    const r = results.find(x=>x.pageNum===pageNum);
-    const inRerun = S.rerunPages.has(pageNum);
-    if(!r) return `<div class="live-cell ${isRunning&&i<(job?.progress||0)?'spin':''}">${pageNum}</div>`;
-    if(r.status==='error') return `
-      <div class="live-cell err" onclick="S.rerunPages.has(${pageNum})?S.rerunPages.delete(${pageNum}):S.rerunPages.add(${pageNum});render()">
-        ✗<div class="live-cell-num">${pageNum}</div>
-        ${inRerun?'<div class="live-cell-rerun">↻</div>':''}
-      </div>`;
-    if(r.status==='done') return `
-      <div class="live-cell done" onclick="S.curPage=${i};S.step=4;render()">
-        <img src="data:image/png;base64,${r.b64}" loading="lazy">
-        <div class="live-cell-num">${pageNum}</div>
-        ${inRerun?'<div class="live-cell-rerun" onclick="event.stopPropagation();S.rerunPages.delete(${pageNum});render()">↻</div>':''}
-      </div>`;
-    return `<div class="live-cell spin">${pageNum}</div>`;
-  }).join('');
+if (!job) return `
 
-  return `
-  ${!job?`
   <div class="card">
     <div class="card-title">Sjekkliste</div>
     ${chk('OpenAI nøkkel',  !!S.apiKey,            S.apiKey?'Klar':'Mangler')}
-    ${chk('Masterpromptet', !!S.masterPrompt,       S.masterPrompt?'Klar':'Standard brukes')}
-    ${chk('Karakterer',     S.characters.length>0,  S.characters.length+' karakterer', S.characters.length===0)}
-    ${chk('Manus',          S.parsedPages.length>0, S.parsedPages.length+' sider', S.parsedPages.length===0)}
+    ${chk('Masterprompt',   !!S.masterPrompt,       S.masterPrompt?'Klar':'Standard brukes')}
+    ${chk('Karakterer',     S.characters.length>0,  S.characters.length+' karakterer',S.characters.length===0)}
+    ${chk('Manus',          S.parsedPages.length>0, S.parsedPages.length+' sider',S.parsedPages.length===0)}
   </div>
   <div class="notice notice-info">
     💡 Jobben kjører i bakgrunnen på Railway.<br>
-    Du kan <strong>lukke appen</strong> og komme tilbake — bildene er der når du er tilbake.
+    Du kan <strong>lukke appen</strong> og komme tilbake — bildene er der.
   </div>
   <button class="btn btn-primary" ${!S.apiKey||!S.parsedPages.length?'disabled':''} onclick="startJob()">
-    🎨 Start jobb — ${S.parsedPages.length} bilder
+    🎨 Start — ${S.parsedPages.length} bilder (ca. $${(S.parsedPages.length*0.065).toFixed(2)})
   </button>
-  <button class="btn btn-secondary" style="margin-top:9px" onclick="S.step=2;render()">← Tilbake</button>`
-  :`
+  <button class="btn btn-secondary" style="margin-top:9px" onclick="S.step=2;render()">← Tilbake</button>`;
+
+const cells = Array.from({length:total},(_,i)=>{
+const pageNum=i+1, r=results.find(x=>x.pageNum===pageNum), inRerun=S.rerunSet.has(pageNum);
+if (!r) return `<div class="live-cell ${running&&i<(job?.progress||0)?'spin':''}">${pageNum}</div>`;
+if (r.status===‘error’) return ` <div class="live-cell err" onclick="S.rerunSet.has(${pageNum})?S.rerunSet.delete(${pageNum}):S.rerunSet.add(${pageNum});render()"> ✗<div class="live-cell-num">${pageNum}</div> </div>`;
+return ` <div class="live-cell done" onclick="S.curPage=${i};S.step=4;render()"> <img src="${imgUrl(S.jobId,pageNum)}" loading="lazy"> <div class="live-cell-num">${pageNum}</div> </div>`;
+}).join(’’);
+
+return `
+
   <div class="card">
-    <div class="card-title">
-      ${isRunning?'🎨 Genererer…':job.status==='done'?'✅ Ferdig!':'⚠️ Feil'}
-    </div>
-    ${isRunning?`
+    <div class="card-title">${running?'🎨 Genererer…':job.status==='done'?'✅ Ferdig!':'⚠️ Stoppet'}</div>
+    ${running?`
     <div class="progress-label">${done} av ${total} bilder ferdig</div>
     <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-    <p class="hint" style="text-align:right;margin-top:6px">Oppdateres automatisk hvert 4. sekund</p>`
-    :`<p style="font-size:14px;color:var(--muted);margin-bottom:12px">${done} av ${total} bilder generert · ${timeAgo(job.completedAt)}</p>`}
+    <p class="hint" style="text-align:right;margin-top:6px">Oppdateres automatisk • ${timeAgo(job.createdAt)}</p>`
+    :`<p style="font-size:14px;color:var(--muted);margin-bottom:12px">${done} av ${total} generert · ${timeAgo(job.completedAt)}</p>`}
     <div class="live-grid">${cells}</div>
   </div>
-  ${S.rerunPages.size?`
-  <div class="notice notice-warn">
-    ${S.rerunPages.size} side(r) valgt for ny generering
-    <button class="btn btn-ghost btn-small" style="margin-top:8px" onclick="rerunPages()">↻ Kjør på nytt</button>
+  ${S.rerunSet.size?`
+  <div class="notice notice-warn">${S.rerunSet.size} side(r) valgt for ny generering
+    <br><button class="btn btn-ghost btn-small" style="margin-top:8px" onclick="rerunPages()">↻ Kjør på nytt</button>
   </div>`:''}
-  ${done>0?`<button class="btn btn-primary" style="margin-top:4px" onclick="S.step=4;render()">Se bilder →</button>`:''}
-  <button class="btn btn-secondary" style="margin-top:9px" onclick="S.jobId=null;S.jobData=null;localStorage.removeItem('job_id');if(S.polling)clearInterval(S.polling);render()">
+  ${done>0?`<button class="btn btn-primary" onclick="S.step=4;render()">Se bilder →</button>`:''}
+  <button class="btn btn-secondary" style="margin-top:9px"
+    onclick="S.jobId=null;S.jobData=null;localStorage.removeItem('job_id');if(S.polling)clearInterval(S.polling);render()">
     + Ny jobb
-  </button>`}`;}
+  </button>`;}
 
 function chk(l,ok,d,w=false){return `<div class="check-row"><span>${l}</span><span class="${ok?'ok-t':w?'warn-t':'err-t'}">${ok?'✓':w?'⚠':'✗'} ${d}</span></div>`;}
 
 // ── Step 4: Viewer ──
 function renderViewer(){
-  const results = Object.values(S.jobData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
-  if(!results.length) return `<div class="notice notice-warn">Ingen bilder ennå.</div><button class="btn btn-primary" onclick="S.step=3;render()">← Tilbake</button>`;
-  const cur=results[S.curPage]||results[0];
-  return `
+const results = Object.values(S.jobData?.results||{}).filter(r=>r.status===‘done’).sort((a,b)=>a.pageNum-b.pageNum);
+if (!results.length) return `<div class="notice notice-warn">Ingen bilder ennå.</div> <button class="btn btn-primary" onclick="S.step=3;render()">← Tilbake</button>`;
+const cur = results[S.curPage]||results[0];
+
+return `
+
   <div class="viewer-wrap">
-    <img src="data:image/png;base64,${cur.b64}" loading="lazy">
+    <img src="${imgUrl(S.jobId,cur.pageNum)}" loading="lazy" id="viewerImg">
     <div class="viewer-badge">${cur.pageNum} / ${S.jobData.pageCount}</div>
-    <button class="viewer-speak" onclick="speak(${JSON.stringify(cur.storyText).replace(/</g,'\\x3c')})">${S.speaking?'⏹':'🔊'}</button>
+    <button class="viewer-speak" onclick="speak(${JSON.stringify(cur.storyText||'').replace(/</g,'\\x3c')})">${S.speaking?'⏹':'🔊'}</button>
   </div>
   <div class="viewer-text">${esc(cur.storyText)}</div>
+
   <div class="viewer-nav">
     <button class="nav-btn" ${S.curPage<=0?'disabled':''} onclick="S.curPage--;render()">‹</button>
     <div class="nav-counter">${S.curPage+1} av ${results.length}</div>
     <button class="nav-btn" ${S.curPage>=results.length-1?'disabled':''} onclick="S.curPage++;render()">›</button>
   </div>
+
   <div class="strip" id="strip">
     ${results.map((r,i)=>`
       <div class="strip-cell ${i===S.curPage?'active':''}" onclick="S.curPage=${i};render()">
-        <img src="data:image/png;base64,${r.b64}" loading="lazy">
+        <img src="${imgUrl(S.jobId,r.pageNum)}" loading="lazy">
         <div class="strip-num">${r.pageNum}</div>
       </div>`).join('')}
   </div>
+
   <div class="save-tip">📱 <strong>Lagre:</strong> Trykk og hold på bildet → «Legg til i Bilder»</div>
+
   <div class="card">
-    <div class="card-title">📦 Last ned</div>
+    <div class="card-title">📦 Last ned & eksporter</div>
     <div class="dl-grid">
-      <div class="dl-btn" onclick="dlZip(false)"><span class="dl-icon">📦</span><span class="dl-label">Alle bilder uten tekst (ZIP)</span></div>
-      <div class="dl-btn" onclick="dlZip(true)"><span class="dl-icon">📦</span><span class="dl-label">Alle bilder med tekst (ZIP)</span></div>
+      <div class="dl-btn" onclick="dlZip()">
+        <span class="dl-icon">📦</span><span class="dl-label">Alle bilder<br>som ZIP</span>
+      </div>
+      <div class="dl-btn" onclick="makeVideo(false)">
+        <span class="dl-icon">🎬</span><span class="dl-label">Video<br>slideshow</span>
+      </div>
+      <div class="dl-btn" onclick="makeVideo(true)">
+        <span class="dl-icon">🎬🔊</span><span class="dl-label">Video med<br>forteller-stemme</span>
+      </div>
+      <div class="dl-btn" onclick="speak(results.map(r=>r.storyText).join('. '))">
+        <span class="dl-icon">${S.speaking?'⏹':'🎙'}</span><span class="dl-label">${S.speaking?'Stopp':'Les opp'}<br>hele boken</span>
+      </div>
     </div>
+    ${S.videoStatus?`<div class="video-status">⏳ ${esc(S.videoStatus)}</div>`:''}
   </div>
+
   <div class="btn-row">
-    <button class="btn btn-secondary" onclick="speak(results.map(r=>r.storyText).join('. '))">${S.speaking?'⏹ Stopp':'🎙 Les opp'}</button>
-    <button class="btn btn-ghost" onclick="S.step=3;render()">← Oversikt</button>
+    <button class="btn btn-secondary" onclick="S.step=3;render()">← Oversikt</button>
+    <button class="btn btn-ghost" onclick="S.step=3;S.jobId=null;S.jobData=null;localStorage.removeItem('job_id');if(S.polling)clearInterval(S.polling);render()">+ Ny jobb</button>
   </div>`;}
 
 // ═══════════════════════════════════════
 //  EVENTS
 // ═══════════════════════════════════════
 function attachEvents(){
-  const cf=document.getElementById('charFile');
-  if(cf) cf.addEventListener('change',e=>addImages(e.target.files, S.characters,'c',render));
-  const of=document.getElementById('objFile');
-  if(of) of.addEventListener('change',e=>addImages(e.target.files, S.objects,'o',render));
-  const strip=document.getElementById('strip');
-  if(strip){const a=strip.querySelector('.strip-cell.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+const cf=document.getElementById(‘charFile’);
+if(cf) cf.addEventListener(‘change’,e=>addImages(e.target.files,S.characters,‘c’));
+const of=document.getElementById(‘objFile’);
+if(of) of.addEventListener(‘change’,e=>addImages(e.target.files,S.objects,‘o’));
+const strip=document.getElementById(‘strip’);
+if(strip){const a=strip.querySelector(’.strip-cell.active’);if(a)a.scrollIntoView({behavior:‘smooth’,block:‘nearest’,inline:‘center’});}
 }
 
 // ═══════════════════════════════════════
@@ -736,15 +742,13 @@ function attachEvents(){
 render();
 updatePill();
 
-// Resume polling if there's an active job
-if(S.jobId){
-  fetchJobData(S.jobId).then(()=>{
-    if(S.jobData?.status==='running'||S.jobData?.status==='queued'){
-      startPolling(S.jobId);
-    }
-    render();
-  });
+if (S.jobId) {
+fetchJob(S.jobId).then(()=>{
+if (S.jobData?.status===‘running’||S.jobData?.status===‘queued’) startPolling(S.jobId);
+render();
+});
 }
 </script>
+
 </body>
 </html>
