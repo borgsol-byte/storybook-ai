@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="no">
 <head>
 <meta charset="UTF-8">
@@ -17,12 +16,12 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--paper);color:var(--ink);font-family:'Lora',Georgia,serif;min-height:100vh}
 
-.hdr{background:var(–ink);text-align:center;padding:28px 20px 18px;position:relative;overflow:hidden}
-.hdr::before{content:’’;position:absolute;inset:0;background:radial-gradient(ellipse at 50% 130%,rgba(184,145,42,0.18) 0%,transparent 65%)}
-.hdr-eye{font-size:10px;letter-spacing:5px;color:var(–gold);text-transform:uppercase;margin-bottom:7px;position:relative}
-.hdr-title{font-family:‘Playfair Display’,serif;font-size:clamp(32px,9vw,52px);font-weight:900;line-height:1;position:relative;
-background:linear-gradient(135deg,#f0d878,var(–gold2),#c9922a,#f0d878);background-size:300% 100%;
--webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite}
+.hdr{background:var(--ink);text-align:center;padding:28px 20px 18px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 130%,rgba(184,145,42,0.18) 0%,transparent 65%)}
+.hdr-eye{font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:7px;position:relative}
+.hdr-title{font-family:'Playfair Display',serif;font-size:clamp(32px,9vw,52px);font-weight:900;line-height:1;position:relative;
+  background:linear-gradient(135deg,#f0d878,var(--gold2),#c9922a,#f0d878);background-size:300% 100%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite}
 .hdr-sub{font-size:13px;color:#5a5060;margin-top:7px;font-style:italic;position:relative}
 .status-pill{display:inline-flex;align-items:center;gap:6px;margin-top:11px;padding:5px 14px;border-radius:20px;font-size:12px;position:relative;border:1px solid;transition:all 0.3s}
 .status-pill.ok {background:rgba(45,122,79,0.15);border-color:rgba(45,122,79,0.4);color:#2d7a4f}
@@ -32,91 +31,91 @@ background:linear-gradient(135deg,#f0d878,var(–gold2),#c9922a,#f0d878);backgro
 @keyframes shimmer{0%{background-position:0%}100%{background-position:300%}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
 
-.tabs{display:flex;background:var(–ink);border-bottom:1px solid rgba(184,145,42,0.18);overflow-x:auto;scrollbar-width:none}
+.tabs{display:flex;background:var(--ink);border-bottom:1px solid rgba(184,145,42,0.18);overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:1;min-width:68px;padding:12px 5px 10px;background:none;border:none;border-bottom:2.5px solid transparent;
-color:#3a3030;font-size:10.5px;font-family:‘Lora’,serif;cursor:pointer;text-align:center;transition:all 0.2s;white-space:nowrap}
-.tab.active{color:var(–gold2);border-bottom-color:var(–gold2)}
+  color:#3a3030;font-size:10.5px;font-family:'Lora',serif;cursor:pointer;text-align:center;transition:all 0.2s;white-space:nowrap}
+.tab.active{color:var(--gold2);border-bottom-color:var(--gold2)}
 .tab.done{color:#5a4a30}
 .tab-icon{display:block;font-size:18px;margin-bottom:3px}
 
 .main{max-width:600px;margin:0 auto;padding:20px 14px 90px}
-.card{background:#fff;border:1px solid var(–light);border-radius:var(–r);padding:18px;margin-bottom:14px;box-shadow:var(–sh)}
-.card-title{font-family:‘Playfair Display’,serif;font-size:11.5px;font-weight:700;letter-spacing:1.2px;color:var(–gold);text-transform:uppercase;margin-bottom:14px}
+.card{background:#fff;border:1px solid var(--light);border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
+.card-title{font-family:'Playfair Display',serif;font-size:11.5px;font-weight:700;letter-spacing:1.2px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
 
-.lbl{display:block;font-size:13px;color:var(–warm);margin-bottom:5px;font-weight:500}
-.hint{font-size:12px;color:var(–muted);font-style:italic;margin-top:5px;line-height:1.55}
-input[type=text],input[type=password],textarea{width:100%;padding:11px 13px;background:var(–paper);border:1.5px solid var(–light);
-border-radius:9px;color:var(–ink);font-family:‘Lora’,serif;font-size:14px;outline:none;transition:border 0.2s;-webkit-appearance:none}
-input:focus,textarea:focus{border-color:var(–gold2)}
+.lbl{display:block;font-size:13px;color:var(--warm);margin-bottom:5px;font-weight:500}
+.hint{font-size:12px;color:var(--muted);font-style:italic;margin-top:5px;line-height:1.55}
+input[type=text],input[type=password],textarea{width:100%;padding:11px 13px;background:var(--paper);border:1.5px solid var(--light);
+  border-radius:9px;color:var(--ink);font-family:'Lora',serif;font-size:14px;outline:none;transition:border 0.2s;-webkit-appearance:none}
+input:focus,textarea:focus{border-color:var(--gold2)}
 textarea{resize:vertical;line-height:1.7}
 .mono{font-family:monospace;font-size:13px;line-height:1.6}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:13px 20px;border-radius:28px;border:none;
-font-family:‘Playfair Display’,serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.18s;width:100%;-webkit-appearance:none}
+  font-family:'Playfair Display',serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.18s;width:100%;-webkit-appearance:none}
 .btn:active{transform:scale(0.97)}
-.btn-primary{background:linear-gradient(135deg,var(–gold),var(–gold2));color:#fff;font-size:15px;padding:15px;box-shadow:0 4px 16px rgba(184,145,42,0.28)}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;font-size:15px;padding:15px;box-shadow:0 4px 16px rgba(184,145,42,0.28)}
 .btn-primary:disabled{opacity:0.38;cursor:not-allowed;transform:none}
-.btn-secondary{background:transparent;border:1.5px solid var(–light);color:var(–muted)}
-.btn-ghost{background:transparent;border:1.5px solid var(–gold);color:var(–gold)}
-.btn-danger{background:rgba(192,57,43,0.1);border:1.5px solid rgba(192,57,43,0.4);color:var(–err)}
+.btn-secondary{background:transparent;border:1.5px solid var(--light);color:var(--muted)}
+.btn-ghost{background:transparent;border:1.5px solid var(--gold);color:var(--gold)}
+.btn-danger{background:rgba(192,57,43,0.1);border:1.5px solid rgba(192,57,43,0.4);color:var(--err)}
 .btn-small{padding:8px 16px;font-size:12px;border-radius:20px;width:auto}
 .btn-row{display:flex;gap:9px}
 .btn-row .btn{flex:1}
 
-.upload-zone{border:2px dashed var(–light);border-radius:9px;padding:16px;text-align:center;cursor:pointer;background:var(–paper);transition:border 0.2s}
-.upload-zone:active{border-color:var(–gold2)}
+.upload-zone{border:2px dashed var(--light);border-radius:9px;padding:16px;text-align:center;cursor:pointer;background:var(--paper);transition:border 0.2s}
+.upload-zone:active{border-color:var(--gold2)}
 .thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
-.thumb{position:relative;width:66px;height:66px;border-radius:8px;overflow:hidden;border:2px solid var(–light)}
+.thumb{position:relative;width:66px;height:66px;border-radius:8px;overflow:hidden;border:2px solid var(--light)}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .thumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.62);color:#fff;font-size:9px;text-align:center;padding:2px 3px;line-height:1.3}
-.thumb-del{position:absolute;top:-5px;right:-5px;width:18px;height:18px;background:var(–err);border:2px solid #fff;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.thumb-del{position:absolute;top:-5px;right:-5px;width:18px;height:18px;background:var(--err);border:2px solid #fff;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer}
 
-.char-item{display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(–paper);border:1px solid var(–light);border-radius:9px;margin-bottom:8px}
-.char-thumb{width:52px;height:52px;border-radius:7px;object-fit:cover;border:2px solid var(–light);flex-shrink:0}
-.char-thumb-empty{width:52px;height:52px;border-radius:7px;background:var(–light);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.char-item{display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(--paper);border:1px solid var(--light);border-radius:9px;margin-bottom:8px}
+.char-thumb{width:52px;height:52px;border-radius:7px;object-fit:cover;border:2px solid var(--light);flex-shrink:0}
+.char-thumb-empty{width:52px;height:52px;border-radius:7px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
 .char-info{flex:1;min-width:0}
-.char-id{font-size:10px;color:var(–gold);font-family:‘Playfair Display’,serif;font-weight:700;letter-spacing:1px;margin-bottom:3px}
+.char-id{font-size:10px;color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;letter-spacing:1px;margin-bottom:3px}
 
 /* Preview table */
 .preview-table{width:100%;border-collapse:collapse;font-size:12px}
-.preview-table th{text-align:left;padding:6px 8px;color:var(–gold);font-family:‘Playfair Display’,serif;font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(–light)}
-.preview-table td{padding:7px 8px;border-bottom:1px solid var(–light);vertical-align:top;color:var(–muted);line-height:1.4}
-.preview-table td:first-child{color:var(–gold);font-family:‘Playfair Display’,serif;font-weight:700;white-space:nowrap}
+.preview-table th{text-align:left;padding:6px 8px;color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--light)}
+.preview-table td{padding:7px 8px;border-bottom:1px solid var(--light);vertical-align:top;color:var(--muted);line-height:1.4}
+.preview-table td:first-child{color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;white-space:nowrap}
 .preview-table tr:last-child td{border-bottom:none}
-.tag{display:inline-block;background:rgba(184,145,42,0.12);color:var(–warm);border-radius:4px;padding:1px 5px;font-size:10px;margin-right:3px;font-family:monospace}
-.tag-sc{background:rgba(45,122,79,0.1);color:var(–ok)}
+.tag{display:inline-block;background:rgba(184,145,42,0.12);color:var(--warm);border-radius:4px;padding:1px 5px;font-size:10px;margin-right:3px;font-family:monospace}
+.tag-sc{background:rgba(45,122,79,0.1);color:var(--ok)}
 
-.progress-label{font-size:14px;color:var(–warm);margin-bottom:9px;font-style:italic;min-height:20px}
-.progress-bar{height:8px;background:var(–light);border-radius:4px;overflow:hidden}
-.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(–gold),var(–gold2));transition:width 0.5s ease}
+.progress-label{font-size:14px;color:var(--warm);margin-bottom:9px;font-style:italic;min-height:20px}
+.progress-bar{height:8px;background:var(--light);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 0.5s ease}
 
 .live-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:14px}
-.live-cell{aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(–light);border:1.5px solid var(–light);
-display:flex;align-items:center;justify-content:center;font-family:‘Playfair Display’,serif;font-size:11px;color:#bbb;transition:border 0.2s;position:relative;cursor:pointer}
-.live-cell.done{border-color:var(–gold2)}
-.live-cell.err{border-color:var(–err);color:var(–err)}
-.live-cell.spin{border-color:var(–gold);animation:borderPulse 1.5s infinite}
+.live-cell{aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--light);border:1.5px solid var(--light);
+  display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:11px;color:#bbb;transition:border 0.2s;position:relative;cursor:pointer}
+.live-cell.done{border-color:var(--gold2)}
+.live-cell.err{border-color:var(--err);color:var(--err)}
+.live-cell.spin{border-color:var(--gold);animation:borderPulse 1.5s infinite}
 .live-cell img{width:100%;height:100%;object-fit:cover;display:block}
-.live-cell-num{position:absolute;bottom:3px;right:5px;font-size:9px;color:rgba(255,255,255,0.85);font-family:‘Playfair Display’,serif;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
-@keyframes borderPulse{0%,100%{border-color:var(–gold)}50%{border-color:var(–gold2)}}
+.live-cell-num{position:absolute;bottom:3px;right:5px;font-size:9px;color:rgba(255,255,255,0.85);font-family:'Playfair Display',serif;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
+@keyframes borderPulse{0%,100%{border-color:var(--gold)}50%{border-color:var(--gold2)}}
 
-.viewer-wrap{background:var(–ink);border-radius:var(–r);overflow:hidden;margin-bottom:13px;box-shadow:var(–sh);position:relative}
-.viewer-wrap img{width:100%;display:block;background:var(–ink);min-height:200px}
-.viewer-badge{position:absolute;top:11px;left:11px;background:rgba(0,0,0,0.65);border-radius:18px;padding:4px 12px;font-size:12px;color:var(–gold2);font-family:‘Playfair Display’,serif;font-weight:700}
+.viewer-wrap{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:13px;box-shadow:var(--sh);position:relative}
+.viewer-wrap img{width:100%;display:block;background:var(--ink);min-height:200px}
+.viewer-badge{position:absolute;top:11px;left:11px;background:rgba(0,0,0,0.65);border-radius:18px;padding:4px 12px;font-size:12px;color:var(--gold2);font-family:'Playfair Display',serif;font-weight:700}
 .viewer-speak{position:absolute;top:11px;right:11px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.viewer-text{padding:13px 17px 15px;font-size:15px;line-height:1.75;color:#c8b99a;font-style:italic;background:var(–ink);border-radius:0 0 var(–r) var(–r)}
+.viewer-text{padding:13px 17px 15px;font-size:15px;line-height:1.75;color:#c8b99a;font-style:italic;background:var(--ink);border-radius:0 0 var(--r) var(--r)}
 .viewer-nav{display:flex;gap:10px;align-items:center;justify-content:center;margin:12px 0}
-.nav-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(–light);background:#fff;font-size:21px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(–sh);transition:all 0.15s}
+.nav-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--light);background:#fff;font-size:21px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh);transition:all 0.15s}
 .nav-btn:disabled{opacity:0.25}
 .nav-btn:active{transform:scale(0.92)}
-.nav-counter{font-family:‘Playfair Display’,serif;font-size:14px;color:var(–muted);flex:1;text-align:center}
+.nav-counter{font-family:'Playfair Display',serif;font-size:14px;color:var(--muted);flex:1;text-align:center}
 .strip{display:flex;gap:6px;overflow-x:auto;padding:3px 2px 10px;margin-bottom:14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .strip::-webkit-scrollbar{display:none}
-.strip-cell{flex-shrink:0;width:60px;cursor:pointer;border-radius:7px;overflow:hidden;border:2.5px solid transparent;transition:border 0.15s;background:var(–light)}
-.strip-cell.active{border-color:var(–gold2)}
+.strip-cell{flex-shrink:0;width:60px;cursor:pointer;border-radius:7px;overflow:hidden;border:2.5px solid transparent;transition:border 0.15s;background:var(--light)}
+.strip-cell.active{border-color:var(--gold2)}
 .strip-cell img{width:60px;height:60px;object-fit:cover;display:block}
-.strip-num{text-align:center;font-size:10px;color:var(–muted);padding:2px 0 3px;font-family:‘Playfair Display’,serif}
+.strip-num{text-align:center;font-size:10px;color:var(--muted);padding:2px 0 3px;font-family:'Playfair Display',serif}
 
 .notice{padding:11px 15px;border-radius:9px;font-size:13px;line-height:1.6;margin-bottom:13px}
 .notice-warn{background:#fff8e6;border:1px solid #e8c84a;color:#7a5a00}
@@ -125,23 +124,22 @@ display:flex;align-items:center;justify-content:center;font-family:‘Playfair D
 .notice-err {background:#fff0ee;border:1px solid #f0a090;color:#7a1a10}
 
 .dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.dl-btn{padding:14px 9px;border-radius:11px;border:1.5px solid var(–light);background:var(–paper);text-align:center;cursor:pointer;transition:background 0.15s}
-.dl-btn:active{background:var(–light)}
+.dl-btn{padding:14px 9px;border-radius:11px;border:1.5px solid var(--light);background:var(--paper);text-align:center;cursor:pointer;transition:background 0.15s}
+.dl-btn:active{background:var(--light)}
 .dl-icon{font-size:21px;display:block;margin-bottom:3px}
-.dl-label{font-size:11.5px;color:var(–muted);line-height:1.4}
+.dl-label{font-size:11.5px;color:var(--muted);line-height:1.4}
 
-.check-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(–light);font-size:13.5px}
+.check-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--light);font-size:13.5px}
 .check-row:last-child{border-bottom:none}
-.ok-t{color:var(–ok);font-size:12.5px}
+.ok-t{color:var(--ok);font-size:12.5px}
 .warn-t{color:#b07800;font-size:12.5px}
-.err-t{color:var(–err);font-size:12.5px}
+.err-t{color:var(--err);font-size:12.5px}
 
-.save-tip{background:var(–ink);color:#c8b99a;border-radius:var(–r);padding:15px 17px;margin-bottom:14px;font-size:13px;line-height:1.7}
-.save-tip strong{color:var(–gold2)}
+.save-tip{background:var(--ink);color:#c8b99a;border-radius:var(--r);padding:15px 17px;margin-bottom:14px;font-size:13px;line-height:1.7}
+.save-tip strong{color:var(--gold2)}
 
-.video-status{font-size:13px;color:var(–warm);font-style:italic;margin-top:10px;min-height:18px}
+.video-status{font-size:13px;color:var(--warm);font-style:italic;margin-top:10px;min-height:18px}
 </style>
-
 </head>
 <body>
 
@@ -503,11 +501,7 @@ function renderSetup(){return `
     <label class="lbl">Master bildeprompt</label>
     <textarea rows="4" class="mono" placeholder="High-end cinematic 3D children's book illustration, Pixar style, soft warm colors…"
       oninput="S.masterPrompt=this.value">${esc(S.masterPrompt)}</textarea>
-
-```
-<p class="hint">Kun stil og atmosfære — ikke karakterer eller handling.</p>
-```
-
+    <p class="hint">Kun stil og atmosfære — ikke karakterer eller handling.</p>
   </div>
   ${S.jobId?`<div class="card"><div class="card-title">📋 Pågående jobb</div>
     <button class="btn btn-ghost btn-small" onclick="S.step=3;fetchJob(S.jobId).then(()=>render())">Gå tilbake til jobb →</button>
@@ -516,12 +510,37 @@ function renderSetup(){return `
 
 // ── Step 1: Characters ──
 function renderChars(){
-const charItems = S.characters.map((c,i)=>` <div class="char-item"> ${c.dataUrl?`<img class="char-thumb" src="${c.dataUrl}">`:`<div class="char-thumb-empty">👤</div>`} <div class="char-info"> <div class="char-id">#c${c.id}</div> <input type="text" value="${esc(c.name)}" placeholder="Navn" style="margin-bottom:5px;font-size:13px;padding:7px 10px" oninput="S.characters[${i}].name=this.value"> <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Utseende: hår, øyne, klær, kropp…" oninput="S.characters[${i}].description=this.value">${esc(c.description)}</textarea> </div> <button class="btn btn-danger btn-small" style="width:auto;padding:6px 10px;flex-shrink:0" onclick="S.characters.splice(${i},1);S.characters.forEach((c,j)=>c.id=String(j+1).padStart(2,'0'));render()">✕</button> </div>`).join(’’);
+  const charItems = S.characters.map((c,i)=>`
+    <div class="char-item">
+      ${c.dataUrl?`<img class="char-thumb" src="${c.dataUrl}">`:`<div class="char-thumb-empty">👤</div>`}
+      <div class="char-info">
+        <div class="char-id">#c${c.id}</div>
+        <input type="text" value="${esc(c.name)}" placeholder="Navn"
+          style="margin-bottom:5px;font-size:13px;padding:7px 10px"
+          oninput="S.characters[${i}].name=this.value">
+        <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Utseende: hår, øyne, klær, kropp…"
+          oninput="S.characters[${i}].description=this.value">${esc(c.description)}</textarea>
+      </div>
+      <button class="btn btn-danger btn-small" style="width:auto;padding:6px 10px;flex-shrink:0"
+        onclick="S.characters.splice(${i},1);S.characters.forEach((c,j)=>c.id=String(j+1).padStart(2,'0'));render()">✕</button>
+    </div>`).join('');
 
-const objItems = S.objects.map((o,i)=>` <div class="char-item"> ${o.dataUrl?`<img class="char-thumb" src="${o.dataUrl}">`:`<div class="char-thumb-empty">🎁</div>`} <div class="char-info"> <div class="char-id" style="color:var(--muted)">#o${o.id}</div> <input type="text" value="${esc(o.name)}" placeholder="Navn (hus, tryllestav…)" style="margin-bottom:5px;font-size:13px;padding:7px 10px" oninput="S.objects[${i}].name=this.value"> <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Beskriv objektet/stedet…" oninput="S.objects[${i}].description=this.value">${esc(o.description)}</textarea> </div> <button class="btn btn-danger btn-small" style="width:auto;padding:6px 10px;flex-shrink:0" onclick="S.objects.splice(${i},1);S.objects.forEach((o,j)=>o.id=String(j+1).padStart(2,'0'));render()">✕</button> </div>`).join(’’);
+  const objItems = S.objects.map((o,i)=>`
+    <div class="char-item">
+      ${o.dataUrl?`<img class="char-thumb" src="${o.dataUrl}">`:`<div class="char-thumb-empty">🎁</div>`}
+      <div class="char-info">
+        <div class="char-id" style="color:var(--muted)">#o${o.id}</div>
+        <input type="text" value="${esc(o.name)}" placeholder="Navn (hus, tryllestav…)"
+          style="margin-bottom:5px;font-size:13px;padding:7px 10px"
+          oninput="S.objects[${i}].name=this.value">
+        <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Beskriv objektet/stedet…"
+          oninput="S.objects[${i}].description=this.value">${esc(o.description)}</textarea>
+      </div>
+      <button class="btn btn-danger btn-small" style="width:auto;padding:6px 10px;flex-shrink:0"
+        onclick="S.objects.splice(${i},1);S.objects.forEach((o,j)=>o.id=String(j+1).padStart(2,'0'));render()">✕</button>
+    </div>`).join('');
 
-return `
-
+  return `
   <div class="card">
     <div class="card-title">👤 Karakterer</div>
     ${charItems||'<p class="hint" style="margin-bottom:12px">Ingen ennå</p>'}
@@ -541,13 +560,18 @@ return `
 
 // ── Step 2: Manus ──
 function renderManus(){
-const charCodes = S.characters.map(c=>`<span class="tag">#c${c.id}</span> ${esc(c.name)}`).join(’  ‘);
-const objCodes  = S.objects.map(o=>`<span class="tag">#o${o.id}</span> ${esc(o.name)}`).join(’  ’);
+  const charCodes = S.characters.map(c=>`<span class="tag">#c${c.id}</span> ${esc(c.name)}`).join('  ');
+  const objCodes  = S.objects.map(o=>`<span class="tag">#o${o.id}</span> ${esc(o.name)}`).join('  ');
 
-const previewRows = S.parsedPages.map(p=>` <tr> <td>#p${String(p.pageNum).padStart(3,'0')}</td> <td>${p.charRefs.map(r=>`<span class="tag">#c${r}</span>`).join('')}${p.objRefs.map(r=>`<span class="tag">#o${r}</span>`).join('')}</td> <td><span class="tag tag-sc">${esc(p.scene.slice(0,30))||'—'}</span></td> <td>${esc((p.visualDesc||p.suggestedVisual||'').slice(0,50))}${(p.visualDesc||'').length>50?'…':''}</td> </tr>`).join(’’);
+  const previewRows = S.parsedPages.map(p=>`
+    <tr>
+      <td>#p${String(p.pageNum).padStart(3,'0')}</td>
+      <td>${p.charRefs.map(r=>`<span class="tag">#c${r}</span>`).join('')}${p.objRefs.map(r=>`<span class="tag">#o${r}</span>`).join('')}</td>
+      <td><span class="tag tag-sc">${esc(p.scene.slice(0,30))||'—'}</span></td>
+      <td>${esc((p.visualDesc||p.suggestedVisual||'').slice(0,50))}${(p.visualDesc||'').length>50?'…':''}</td>
+    </tr>`).join('');
 
-return `
-
+  return `
   <div class="card">
     <div class="card-title">📖 Manus</div>
     <textarea id="manusInput" rows="10" class="mono"
@@ -575,8 +599,7 @@ return `
     </div>
   </div>
 
-${S.parsedPages.length?`
-
+  ${S.parsedPages.length?`
   <div class="card">
     <div class="card-title">Forhåndsvisning — ${S.parsedPages.length} sider</div>
     <div style="overflow-x:auto">
@@ -593,36 +616,35 @@ ${S.parsedPages.length?`
   </div>`;}
 
 async function runAISuggest() {
-if (!S.antKey) return;
-if (!S.parsedPages.length) await parsePages();
-try {
-const r = await fetch(base()+’/suggest’, {
-method:‘POST’, headers:{‘Content-Type’:‘application/json’},
-body: JSON.stringify({pages:S.parsedPages, characters:S.characters, objects:S.objects, anthropicKey:S.antKey}),
-});
-const d = await r.json();
-if (d.error) { alert(’AI-forslag feilet: ’+d.error); return; }
-if (d.suggestions) {
-for (const s of d.suggestions) {
-const p = S.parsedPages.find(x=>x.pageNum===s.pageNum);
-if (p && !p.visualDesc) p.suggestedVisual = s.visualDesc;
-}
-renderMain();
-}
-} catch(err) { alert(’Feil: ’+err.message); }
+  if (!S.antKey) return;
+  if (!S.parsedPages.length) await parsePages();
+  try {
+    const r = await fetch(base()+'/suggest', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({pages:S.parsedPages, characters:S.characters, objects:S.objects, anthropicKey:S.antKey}),
+    });
+    const d = await r.json();
+    if (d.error) { alert('AI-forslag feilet: '+d.error); return; }
+    if (d.suggestions) {
+      for (const s of d.suggestions) {
+        const p = S.parsedPages.find(x=>x.pageNum===s.pageNum);
+        if (p && !p.visualDesc) p.suggestedVisual = s.visualDesc;
+      }
+      renderMain();
+    }
+  } catch(err) { alert('Feil: '+err.message); }
 }
 
 // ── Step 3: Generate ──
 function renderGenerate(){
-const job = S.jobData;
-const results = job ? Object.values(job.results||{}).sort((a,b)=>a.pageNum-b.pageNum) : [];
-const done    = results.filter(r=>r.status===‘done’).length;
-const total   = job?.pageCount || S.parsedPages.length || 0;
-const pct     = total>0 ? Math.round((job?.progress||0)/total*100) : 0;
-const running = job?.status===‘running’||job?.status===‘queued’;
+  const job = S.jobData;
+  const results = job ? Object.values(job.results||{}).sort((a,b)=>a.pageNum-b.pageNum) : [];
+  const done    = results.filter(r=>r.status==='done').length;
+  const total   = job?.pageCount || S.parsedPages.length || 0;
+  const pct     = total>0 ? Math.round((job?.progress||0)/total*100) : 0;
+  const running = job?.status==='running'||job?.status==='queued';
 
-if (!job) return `
-
+  if (!job) return `
   <div class="card">
     <div class="card-title">Sjekkliste</div>
     ${chk('OpenAI nøkkel',  !!S.apiKey,            S.apiKey?'Klar':'Mangler')}
@@ -639,15 +661,21 @@ if (!job) return `
   </button>
   <button class="btn btn-secondary" style="margin-top:9px" onclick="S.step=2;render()">← Tilbake</button>`;
 
-const cells = Array.from({length:total},(_,i)=>{
-const pageNum=i+1, r=results.find(x=>x.pageNum===pageNum), inRerun=S.rerunSet.has(pageNum);
-if (!r) return `<div class="live-cell ${running&&i<(job?.progress||0)?'spin':''}">${pageNum}</div>`;
-if (r.status===‘error’) return ` <div class="live-cell err" onclick="S.rerunSet.has(${pageNum})?S.rerunSet.delete(${pageNum}):S.rerunSet.add(${pageNum});render()"> ✗<div class="live-cell-num">${pageNum}</div> </div>`;
-return ` <div class="live-cell done" onclick="S.curPage=${i};S.step=4;render()"> <img src="${imgUrl(S.jobId,pageNum)}" loading="lazy"> <div class="live-cell-num">${pageNum}</div> </div>`;
-}).join(’’);
+  const cells = Array.from({length:total},(_,i)=>{
+    const pageNum=i+1, r=results.find(x=>x.pageNum===pageNum), inRerun=S.rerunSet.has(pageNum);
+    if (!r) return `<div class="live-cell ${running&&i<(job?.progress||0)?'spin':''}">${pageNum}</div>`;
+    if (r.status==='error') return `
+      <div class="live-cell err" onclick="S.rerunSet.has(${pageNum})?S.rerunSet.delete(${pageNum}):S.rerunSet.add(${pageNum});render()">
+        ✗<div class="live-cell-num">${pageNum}</div>
+      </div>`;
+    return `
+      <div class="live-cell done" onclick="S.curPage=${i};S.step=4;render()">
+        <img src="${imgUrl(S.jobId,pageNum)}" loading="lazy">
+        <div class="live-cell-num">${pageNum}</div>
+      </div>`;
+  }).join('');
 
-return `
-
+  return `
   <div class="card">
     <div class="card-title">${running?'🎨 Genererer…':job.status==='done'?'✅ Ferdig!':'⚠️ Stoppet'}</div>
     ${running?`
@@ -671,12 +699,12 @@ function chk(l,ok,d,w=false){return `<div class="check-row"><span>${l}</span><sp
 
 // ── Step 4: Viewer ──
 function renderViewer(){
-const results = Object.values(S.jobData?.results||{}).filter(r=>r.status===‘done’).sort((a,b)=>a.pageNum-b.pageNum);
-if (!results.length) return `<div class="notice notice-warn">Ingen bilder ennå.</div> <button class="btn btn-primary" onclick="S.step=3;render()">← Tilbake</button>`;
-const cur = results[S.curPage]||results[0];
+  const results = Object.values(S.jobData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
+  if (!results.length) return `<div class="notice notice-warn">Ingen bilder ennå.</div>
+    <button class="btn btn-primary" onclick="S.step=3;render()">← Tilbake</button>`;
+  const cur = results[S.curPage]||results[0];
 
-return `
-
+  return `
   <div class="viewer-wrap">
     <img src="${imgUrl(S.jobId,cur.pageNum)}" loading="lazy" id="viewerImg">
     <div class="viewer-badge">${cur.pageNum} / ${S.jobData.pageCount}</div>
@@ -728,12 +756,12 @@ return `
 //  EVENTS
 // ═══════════════════════════════════════
 function attachEvents(){
-const cf=document.getElementById(‘charFile’);
-if(cf) cf.addEventListener(‘change’,e=>addImages(e.target.files,S.characters,‘c’));
-const of=document.getElementById(‘objFile’);
-if(of) of.addEventListener(‘change’,e=>addImages(e.target.files,S.objects,‘o’));
-const strip=document.getElementById(‘strip’);
-if(strip){const a=strip.querySelector(’.strip-cell.active’);if(a)a.scrollIntoView({behavior:‘smooth’,block:‘nearest’,inline:‘center’});}
+  const cf=document.getElementById('charFile');
+  if(cf) cf.addEventListener('change',e=>addImages(e.target.files,S.characters,'c'));
+  const of=document.getElementById('objFile');
+  if(of) of.addEventListener('change',e=>addImages(e.target.files,S.objects,'o'));
+  const strip=document.getElementById('strip');
+  if(strip){const a=strip.querySelector('.strip-cell.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
 }
 
 // ═══════════════════════════════════════
@@ -743,12 +771,11 @@ render();
 updatePill();
 
 if (S.jobId) {
-fetchJob(S.jobId).then(()=>{
-if (S.jobData?.status===‘running’||S.jobData?.status===‘queued’) startPolling(S.jobId);
-render();
-});
+  fetchJob(S.jobId).then(()=>{
+    if (S.jobData?.status==='running'||S.jobData?.status==='queued') startPolling(S.jobId);
+    render();
+  });
 }
 </script>
-
 </body>
 </html>
