@@ -214,36 +214,65 @@ async function generateImage(prompt, refs, apiKey, retries = 2) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
       if (refs.length > 0) {
+        // OpenAI /images/edits requires multipart with image as a file blob
+        // Use node-fetch with FormData — append each image as a Blob with explicit type
         const form = new FormData();
         form.append("model", "gpt-image-1");
         form.append("prompt", prompt);
         form.append("n", "1");
         form.append("size", "1024x1024");
+
         for (const ref of refs) {
-          form.append("image[]", ref.buffer, { filename: ref.name, contentType: "image/png" });
+          // Ensure buffer is valid
+          if (!ref.buffer || ref.buffer.length === 0) continue;
+          form.append("image[]", ref.buffer, {
+            filename: ref.name.endsWith(".png") ? ref.name : ref.name + ".png",
+            contentType: "image/png",
+            knownLength: ref.buffer.length,
+          });
         }
+
+        console.log(`[generateImage] sending ${refs.length} refs, prompt length: ${prompt.length}`);
+
         const r = await fetch("https://api.openai.com/v1/images/edits", {
           method: "POST",
-          headers: { Authorization: `Bearer ${apiKey}`, ...form.getHeaders() },
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            ...form.getHeaders(),
+          },
           body: form,
         });
-        const d = await r.json();
-        if (d.error) throw new Error(d.error.message);
+
+        const text = await r.text();
+        let d;
+        try { d = JSON.parse(text); } catch(_) { throw new Error(`OpenAI non-JSON response: ${text.slice(0,200)}`); }
+        if (d.error) throw new Error(d.error.message || JSON.stringify(d.error));
         return d.data[0].b64_json;
+
       } else {
+        // No refs — use standard generations
         const r = await fetch("https://api.openai.com/v1/images/generations", {
           method: "POST",
-          headers: { "Content-Type":"application/json", Authorization:`Bearer ${apiKey}` },
-          body: JSON.stringify({ model:"gpt-image-1", prompt, n:1, size:"1024x1024", output_format:"b64_json" }),
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+          body: JSON.stringify({
+            model: "gpt-image-1",
+            prompt,
+            n: 1,
+            size: "1024x1024",
+            output_format: "b64_json",
+          }),
         });
-        const d = await r.json();
-        if (d.error) throw new Error(d.error.message);
+        const text = await r.text();
+        let d;
+        try { d = JSON.parse(text); } catch(_) { throw new Error(`OpenAI non-JSON: ${text.slice(0,200)}`); }
+        if (d.error) throw new Error(d.error.message || JSON.stringify(d.error));
         return d.data[0].b64_json;
       }
+
     } catch (err) {
       console.error(`[generateImage] attempt ${attempt+1} failed: ${err.message}`);
       if (attempt === retries) throw err;
-      await new Promise(res => setTimeout(res, 2000 * (attempt+1)));
+      await new Promise(res => setTimeout(res, 2000 * (attempt + 1)));
     }
   }
 }
