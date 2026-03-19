@@ -11,26 +11,25 @@
 :root{--ink:#1a1520;--paper:#faf6ef;--gold:#b8912a;--gold2:#d4a843;--warm:#8b6914;--muted:#7a6e5a;--light:#ede5d4;--err:#c0392b;--ok:#2d7a4f;--r:13px;--sh:0 3px 20px rgba(0,0,0,0.09)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--paper);color:var(--ink);font-family:'Lora',Georgia,serif;min-height:100vh}
-.hdr{background:var(--ink);text-align:center;padding:22px 20px 14px;position:relative;overflow:hidden}
+.hdr{background:var(--ink);text-align:center;padding:20px 20px 14px;position:relative;overflow:hidden}
 .hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 130%,rgba(184,145,42,0.18) 0%,transparent 65%)}
 .hdr-eye{font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:5px;position:relative}
-.hdr-title{font-family:'Playfair Display',serif;font-size:clamp(26px,7vw,44px);font-weight:900;line-height:1;position:relative;background:linear-gradient(135deg,#f0d878,var(--gold2),#c9922a,#f0d878);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite}
-.hdr-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:9px;position:relative}
-.hdr-sub{font-size:11px;color:#5a5060;font-style:italic}
+.hdr-title{font-family:'Playfair Display',serif;font-size:clamp(24px,6vw,42px);font-weight:900;line-height:1;position:relative;background:linear-gradient(135deg,#f0d878,var(--gold2),#c9922a,#f0d878);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite}
+.hdr-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;position:relative;flex-wrap:wrap}
 .status-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:16px;font-size:11px;border:1px solid;transition:all 0.3s;cursor:pointer}
 .status-pill.ok{background:rgba(45,122,79,0.15);border-color:rgba(45,122,79,0.4);color:#2d7a4f}
 .status-pill.err{background:rgba(192,57,43,0.12);border-color:rgba(192,57,43,0.35);color:#c0392b}
 .status-pill.chk{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:#4a4060}
 .pdot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 2s infinite}
 .user-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;color:#c8b99a;font-size:11px;padding:4px 12px;cursor:pointer;font-family:'Lora',serif}
+.lib-btn{background:rgba(184,145,42,0.15);border:1px solid rgba(184,145,42,0.3);border-radius:16px;color:var(--gold2);font-size:11px;padding:4px 12px;cursor:pointer;font-family:'Lora',serif}
 @keyframes shimmer{0%{background-position:0%}100%{background-position:300%}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
 .tabs{display:flex;background:var(--ink);border-bottom:1px solid rgba(184,145,42,0.18);overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:1;min-width:55px;padding:10px 3px 9px;background:none;border:none;border-bottom:2.5px solid transparent;color:#3a3030;font-size:10px;font-family:'Lora',serif;cursor:pointer;text-align:center;transition:all 0.2s;white-space:nowrap}
-.tab.active{color:var(--gold2);border-bottom-color:var(--gold2)}
-.tab.done{color:#5a4a30}
-.tab-icon{display:block;font-size:16px;margin-bottom:2px}
+.tab{flex:1;min-width:50px;padding:10px 3px 8px;background:none;border:none;border-bottom:2.5px solid transparent;color:#3a3030;font-size:9.5px;font-family:'Lora',serif;cursor:pointer;text-align:center;transition:all 0.2s;white-space:nowrap}
+.tab.active{color:var(--gold2);border-bottom-color:var(--gold2)}.tab.done{color:#5a4a30}
+.tab-icon{display:block;font-size:15px;margin-bottom:2px}
 .main{max-width:640px;margin:0 auto;padding:16px 13px 80px}
 .card{background:#fff;border:1px solid var(--light);border-radius:var(--r);padding:16px;margin-bottom:13px;box-shadow:var(--sh)}
 .card-title{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:1.2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
@@ -38,46 +37,62 @@ body{background:var(--paper);color:var(--ink);font-family:'Lora',Georgia,serif;m
 .hint{font-size:11.5px;color:var(--muted);font-style:italic;margin-top:4px;line-height:1.5}
 input[type=text],input[type=password],textarea,select{width:100%;padding:10px 12px;background:var(--paper);border:1.5px solid var(--light);border-radius:9px;color:var(--ink);font-family:'Lora',serif;font-size:14px;outline:none;transition:border 0.2s;-webkit-appearance:none}
 input:focus,textarea:focus,select:focus{border-color:var(--gold2)}
-textarea{resize:vertical;line-height:1.7}
-.mono{font-family:'Courier New',monospace;font-size:12px;line-height:1.6}
+textarea{resize:vertical;line-height:1.7}.mono{font-family:'Courier New',monospace;font-size:12px;line-height:1.6}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 18px;border-radius:26px;border:none;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.18s;width:100%;-webkit-appearance:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 17px;border-radius:24px;border:none;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.18s;width:100%;-webkit-appearance:none}
 .btn:active{transform:scale(0.97)}
 .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;font-size:14px;padding:14px;box-shadow:0 4px 16px rgba(184,145,42,0.28)}
 .btn-primary:disabled{opacity:0.38;cursor:not-allowed;transform:none}
 .btn-secondary{background:transparent;border:1.5px solid var(--light);color:var(--muted)}
 .btn-ghost{background:transparent;border:1.5px solid var(--gold);color:var(--gold)}
 .btn-danger{background:rgba(192,57,43,0.1);border:1.5px solid rgba(192,57,43,0.4);color:var(--err)}
-.btn-small{padding:7px 14px;font-size:11px;border-radius:18px;width:auto}
-.btn-row{display:flex;gap:9px}.btn-row .btn{flex:1}
+.btn-stop{background:rgba(200,100,0,0.1);border:1.5px solid rgba(200,100,0,0.4);color:#c86400}
+.btn-small{padding:6px 13px;font-size:11px;border-radius:17px;width:auto}
+.btn-row{display:flex;gap:8px}.btn-row .btn{flex:1}
 .upload-zone{border:2px dashed var(--light);border-radius:9px;padding:14px;text-align:center;cursor:pointer;background:var(--paper);transition:border 0.2s}
 .upload-zone:active{border-color:var(--gold2)}
+/* Library */
+.proj-item{background:#fff;border:1px solid var(--light);border-radius:var(--r);padding:15px;margin-bottom:10px;box-shadow:var(--sh)}
+.proj-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.proj-thumb{width:56px;height:56px;border-radius:8px;overflow:hidden;background:var(--light);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px}
+.proj-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.proj-meta{flex:1;min-width:0}
+.proj-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.proj-info{font-size:11px;color:var(--muted);line-height:1.5}
+.proj-badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-family:'Playfair Display',serif;font-weight:700;margin-left:6px}
+.badge-done   {background:rgba(45,122,79,0.12);color:var(--ok)}
+.badge-running{background:rgba(184,145,42,0.12);color:var(--gold)}
+.badge-stopped{background:rgba(100,100,100,0.1);color:#666}
+.badge-error  {background:rgba(192,57,43,0.1);color:var(--err)}
+.badge-draft  {background:rgba(100,100,180,0.1);color:#4a4ab0}
+.proj-progress{height:4px;background:var(--light);border-radius:2px;overflow:hidden;margin:6px 0}
+.proj-progress-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 0.4s}
+.proj-actions{display:flex;gap:6px;flex-wrap:wrap}
+/* Character items */
 .char-item{display:flex;gap:9px;align-items:flex-start;padding:11px;background:var(--paper);border:1px solid var(--light);border-radius:9px;margin-bottom:8px}
-.char-thumb{width:48px;height:48px;border-radius:7px;object-fit:cover;border:2px solid var(--light);flex-shrink:0}
-.char-thumb-empty{width:48px;height:48px;border-radius:7px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.char-thumb{width:46px;height:46px;border-radius:7px;object-fit:cover;border:2px solid var(--light);flex-shrink:0}
+.char-thumb-empty{width:46px;height:46px;border-radius:7px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .char-info{flex:1;min-width:0}
 .char-id{font-size:10px;color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;letter-spacing:1px;margin-bottom:2px}
-.tag{display:inline-block;background:rgba(184,145,42,0.12);color:var(--warm);border-radius:4px;padding:1px 5px;font-size:10px;margin-right:2px;font-family:monospace}
-.tag-sc{background:rgba(45,122,79,0.1);color:var(--ok)}
-.tag-cam{background:rgba(60,80,180,0.1);color:#3050b0}
-.tag-rel{background:rgba(140,50,180,0.1);color:#8c32b4}
-/* Preview table */
+/* Preview */
 .pt{width:100%;border-collapse:collapse;font-size:11px}
-.pt th{text-align:left;padding:5px 7px;color:var(--gold);font-family:'Playfair Display',serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--light);white-space:nowrap}
-.pt td{padding:6px 7px;border-bottom:1px solid var(--light);vertical-align:top;color:var(--muted);line-height:1.4}
+.pt th{text-align:left;padding:5px 6px;color:var(--gold);font-family:'Playfair Display',serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--light)}
+.pt td{padding:5px 6px;border-bottom:1px solid var(--light);vertical-align:top;color:var(--muted);line-height:1.4}
 .pt td:first-child{color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;white-space:nowrap}
 .pt tr:last-child td{border-bottom:none}
+.tag{display:inline-block;background:rgba(184,145,42,0.12);color:var(--warm);border-radius:4px;padding:1px 5px;font-size:10px;margin-right:2px;font-family:monospace}
+.tag-sc{background:rgba(45,122,79,0.1);color:var(--ok)}.tag-cam{background:rgba(60,80,180,0.1);color:#3050b0}.tag-rel{background:rgba(140,50,180,0.1);color:#8c32b4}
 /* Progress */
 .progress-label{font-size:13px;color:var(--warm);margin-bottom:7px;font-style:italic;min-height:18px}
 .progress-bar{height:7px;background:var(--light);border-radius:4px;overflow:hidden}
 .progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 0.5s ease}
 .live-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:12px}
 .live-cell{aspect-ratio:1;border-radius:7px;overflow:hidden;background:var(--light);border:1.5px solid var(--light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:10px;color:#bbb;position:relative;cursor:pointer;transition:border 0.2s}
-.live-cell.done{border-color:var(--gold2)}.live-cell.err{border-color:var(--err);color:var(--err);font-size:15px}.live-cell.spin{border-color:var(--gold);animation:bp 1.5s infinite}
+.live-cell.done{border-color:var(--gold2)}.live-cell.err{border-color:var(--err);color:var(--err)}.live-cell.spin{border-color:var(--gold);animation:bp 1.5s infinite}
 .live-cell img{width:100%;height:100%;object-fit:cover;display:block}
-.live-cell-num{position:absolute;bottom:2px;right:4px;font-size:9px;color:rgba(255,255,255,0.85);font-family:'Playfair Display',serif;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
+.live-cell-num{position:absolute;bottom:2px;right:4px;font-size:9px;color:rgba(255,255,255,0.85);font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
 @keyframes bp{0%,100%{border-color:var(--gold)}50%{border-color:var(--gold2)}}
+/* Viewer */
 .viewer-wrap{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:11px;box-shadow:var(--sh);position:relative}
 .viewer-wrap img{width:100%;display:block;background:var(--ink);min-height:180px}
 .viewer-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.65);border-radius:16px;padding:3px 10px;font-size:11px;color:var(--gold2);font-family:'Playfair Display',serif;font-weight:700}
@@ -89,9 +104,9 @@ textarea{resize:vertical;line-height:1.7}
 .nav-counter{font-family:'Playfair Display',serif;font-size:13px;color:var(--muted);flex:1;text-align:center}
 .strip{display:flex;gap:5px;overflow-x:auto;padding:3px 2px 9px;margin-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .strip::-webkit-scrollbar{display:none}
-.strip-cell{flex-shrink:0;width:56px;cursor:pointer;border-radius:7px;overflow:hidden;border:2.5px solid transparent;transition:border 0.15s;background:var(--light)}
+.strip-cell{flex-shrink:0;width:54px;cursor:pointer;border-radius:7px;overflow:hidden;border:2.5px solid transparent;transition:border 0.15s;background:var(--light)}
 .strip-cell.active{border-color:var(--gold2)}
-.strip-cell img{width:56px;height:56px;object-fit:cover;display:block}
+.strip-cell img{width:54px;height:54px;object-fit:cover;display:block}
 .strip-num{text-align:center;font-size:9px;color:var(--muted);padding:2px 0;font-family:'Playfair Display',serif}
 .notice{padding:10px 14px;border-radius:9px;font-size:13px;line-height:1.6;margin-bottom:12px}
 .notice-warn{background:#fff8e6;border:1px solid #e8c84a;color:#7a5a00}
@@ -110,21 +125,12 @@ textarea{resize:vertical;line-height:1.7}
 .save-tip strong{color:var(--gold2)}
 .video-status{font-size:12px;color:var(--warm);font-style:italic;margin-top:7px}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:flex-end}
-.modal{background:var(--paper);border-radius:20px 20px 0 0;padding:26px 18px 38px;width:100%;max-width:500px;margin:0 auto}
-.modal-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:var(--ink);margin-bottom:18px;text-align:center}
-.modal-tabs{display:flex;gap:0;margin-bottom:18px;border-bottom:2px solid var(--light)}
-.modal-tab{flex:1;padding:9px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:'Lora',serif;font-size:13px;cursor:pointer;color:var(--muted);transition:all 0.2s}
+.modal{background:var(--paper);border-radius:20px 20px 0 0;padding:24px 18px 36px;width:100%;max-width:500px;margin:0 auto}
+.modal-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:var(--ink);margin-bottom:16px;text-align:center}
+.modal-tabs{display:flex;margin-bottom:16px;border-bottom:2px solid var(--light)}
+.modal-tab{flex:1;padding:8px;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:'Lora',serif;font-size:13px;cursor:pointer;color:var(--muted);transition:all 0.2s}
 .modal-tab.active{color:var(--gold2);border-bottom-color:var(--gold2)}
-.modal-error{color:var(--err);font-size:13px;margin-bottom:11px;text-align:center}
-/* World DNA section */
-.world-section{background:#f4f8f0;border:1px solid #c8dfc0;border-radius:9px;padding:14px;margin-bottom:10px}
-.world-section .card-title{color:var(--ok)}
-/* Trait tags */
-.trait-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
-.trait-tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-family:'Lora',serif}
-.trait-fixed{background:rgba(45,122,79,0.12);color:var(--ok);border:1px solid rgba(45,122,79,0.25)}
-.trait-forbidden{background:rgba(192,57,43,0.1);color:var(--err);border:1px solid rgba(192,57,43,0.25)}
-.trait-cond{background:rgba(184,145,42,0.1);color:var(--gold);border:1px solid rgba(184,145,42,0.25)}
+.modal-error{color:var(--err);font-size:13px;margin-bottom:10px;text-align:center}
 </style>
 </head>
 <body>
@@ -134,6 +140,7 @@ textarea{resize:vertical;line-height:1.7}
   <h1 class="hdr-title">StoryBook AI</h1>
   <div class="hdr-row">
     <div class="status-pill chk" id="pill" onclick="updatePill()"><div class="pdot"></div><span id="pillTxt">Sjekker…</span></div>
+    <button class="lib-btn" onclick="showLibrary()">📚 Mine bøker</button>
     <button class="user-btn" id="userBtn" onclick="toggleAuth()">Logg inn</button>
   </div>
 </header>
@@ -141,6 +148,7 @@ textarea{resize:vertical;line-height:1.7}
 <nav class="tabs" id="tabs"></nav>
 <main class="main" id="main"></main>
 
+<!-- Auth modal -->
 <div class="modal-overlay" id="authModal" style="display:none" onclick="if(event.target===this)hideAuth()">
   <div class="modal">
     <div class="modal-title">📚 Min konto</div>
@@ -168,37 +176,36 @@ textarea{resize:vertical;line-height:1.7}
 </div>
 
 <script>
+// ═══════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════
 const S = {
-  step:0,
-  token:    localStorage.getItem('sb_token')||null,
-  username: localStorage.getItem('sb_username')||null,
-  apiKey:   localStorage.getItem('oai_key')||'',
-  masterPrompt: localStorage.getItem('sb_master')||'',
-  bookTitle:'',
-  characters:[],
-  objects:[],
-  world:{
-    world_name:'',
-    core_location:'',
-    recurring_landmarks:'',
-    season:'',
-    weather_baseline:'',
-    forbidden_environment_drift:'',
-  },
-  manus:'',
-  beskrivelse:'',
-  parsedPages:[],
-  parseDebounce:null,
-  jobId:   localStorage.getItem('job_id')||null,
-  jobData: null,
-  polling: null,
-  curPage:0,
-  speaking:false,
-  rerunSet:new Set(),
-  videoStatus:'',
+  step: 0,
+  token:    localStorage.getItem('sb_token')    || null,
+  username: localStorage.getItem('sb_username') || null,
+  // Editor fields
+  apiKey:       localStorage.getItem('oai_key')  || '',
+  masterPrompt: localStorage.getItem('sb_master')|| '',
+  bookTitle:    '',
+  characters:   [],
+  objects:      [],
+  world:        { world_name:'', core_location:'', recurring_landmarks:'', season:'', weather_baseline:'', forbidden_environment_drift:'' },
+  manus:        '',
+  beskrivelse:  '',
+  parsedPages:  [],
+  parseDebounce: null,
+  // Active project
+  projectId:    localStorage.getItem('proj_id') || null,
+  projectData:  null,
+  polling:      null,
+  // Viewer
+  curPage:  0,
+  speaking: false,
+  rerunSet: new Set(),
+  videoStatus: '',
 };
 
-const STEPS=[
+const STEPS = [
   {icon:'⚙️',label:'Oppsett'},
   {icon:'👤',label:'Karakterer'},
   {icon:'🌍',label:'Verden'},
@@ -210,13 +217,14 @@ const STEPS=[
 function base(){return window.location.origin;}
 function authH(){return S.token?{'x-user-token':S.token}:{};}
 
+// ── Backend check ──
 async function updatePill(){
   const pill=document.getElementById('pill'),txt=document.getElementById('pillTxt');
   try{const r=await fetch(base()+'/health',{signal:AbortSignal.timeout(5000)});const d=await r.json();if(d.ok){pill.className='status-pill ok';txt.textContent='Tilkoblet ✓';return true;}}catch(_){}
   pill.className='status-pill err';txt.textContent='Ikke tilkoblet';return false;
 }
 
-// ── AUTH ──
+// ── Auth ──
 function toggleAuth(){
   if(S.token){if(confirm(`Logget inn som ${S.username}.\n\nLogg ut?`)){S.token=null;S.username=null;localStorage.removeItem('sb_token');localStorage.removeItem('sb_username');updateUserBtn();render();}}
   else document.getElementById('authModal').style.display='flex';
@@ -242,117 +250,254 @@ async function doRegister(){
 }
 function updateUserBtn(){const b=document.getElementById('userBtn');if(b)b.textContent=S.token?`👤 ${S.username}`:'Logg inn';}
 
-// ── POLLING ──
-function startPolling(jobId){
-  if(S.polling)clearInterval(S.polling);S.jobId=jobId;localStorage.setItem('job_id',jobId);
-  S.polling=setInterval(async()=>{await fetchJob(jobId);if(S.step===4)renderMain();if(S.jobData?.status==='done'||S.jobData?.status==='error'){clearInterval(S.polling);S.polling=null;}},4000);
+// ── Library ──
+async function showLibrary(){
+  if(!S.token){alert('Logg inn for å se biblioteket ditt.');toggleAuth();return;}
+  try{
+    const r=await fetch(base()+'/projects',{headers:authH()});
+    const d=await r.json();
+    renderLibraryModal(d.projects||[]);
+  }catch(e){alert('Feil: '+e.message);}
 }
-async function fetchJob(jobId){if(!jobId)return;try{const r=await fetch(base()+`/jobs/${jobId}`,{headers:authH()});S.jobData=await r.json();}catch(_){}}
 
-// ── PARSE ──
+function renderLibraryModal(projects){
+  const existing=document.getElementById('libModal');
+  if(existing)existing.remove();
+  const overlay=document.createElement('div');
+  overlay.id='libModal';
+  overlay.className='modal-overlay';
+  overlay.onclick=e=>{if(e.target===overlay)overlay.remove();};
+
+  const statusBadge=s=>{
+    const map={done:'badge-done ✅',running:'badge-running 🎨',queued:'badge-running ⏳',stopped:'badge-stopped ⏹',error:'badge-err ⚠️',draft:'badge-draft 📝'};
+    const[cls,icon]=(map[s]||'badge-draft 📝').split(' ');
+    return `<span class="proj-badge ${cls}">${icon} ${s}</span>`;
+  };
+
+  const rows=projects.length ? projects.map((p,i)=>{
+    const pct=p.total>0?Math.round((p.progress||0)/p.total*100):0;
+    const date=new Date(p.createdAt).toLocaleDateString('nb-NO');
+    return `
+    <div class="proj-item">
+      <div class="proj-header">
+        <div class="proj-thumb">📖</div>
+        <div class="proj-meta">
+          <div class="proj-title">${esc(p.title||'Bok')}${statusBadge(p.status)}</div>
+          <div class="proj-info">${date} · ${p.successCount||0}/${p.total||0} bilder</div>
+          ${(p.status==='running'||p.status==='queued')?`<div class="proj-progress"><div class="proj-progress-fill" style="width:${pct}%"></div></div>`:''}
+        </div>
+      </div>
+      <div class="proj-actions">
+        <button class="btn btn-ghost btn-small" onclick="openProject('${p.id}');document.getElementById('libModal').remove()">Åpne</button>
+        <button class="btn btn-secondary btn-small" onclick="duplicateProject('${p.id}');document.getElementById('libModal').remove()">Kopier</button>
+        ${p.status==='done'?`<button class="btn btn-secondary btn-small" onclick="exportProject('${p.id}')">Last ned</button>`:''}
+        ${(p.status==='running'||p.status==='queued')?`<button class="btn btn-stop btn-small" onclick="stopProject('${p.id}',this)">⏹ Stopp</button>`:''}
+        <button class="btn btn-danger btn-small" onclick="deleteProject('${p.id}',this)">Slett</button>
+      </div>
+    </div>`}).join('')
+    : '<p style="color:var(--muted);font-style:italic;text-align:center;padding:20px">Ingen prosjekter ennå</p>';
+
+  overlay.innerHTML=`<div class="modal" style="max-height:80vh;overflow-y:auto">
+    <div class="modal-title">📚 Mine bøker</div>
+    ${rows}
+    <button class="btn btn-secondary" style="margin-top:10px" onclick="document.getElementById('libModal').remove()">Lukk</button>
+  </div>`;
+  document.body.appendChild(overlay);
+}
+
+async function openProject(projectId){
+  try{
+    const r=await fetch(base()+`/projects/${projectId}`,{headers:authH()});
+    const proj=await r.json();
+    if(proj.error){alert(proj.error);return;}
+    // Load all fields into editor state
+    S.masterPrompt = proj.masterPrompt||'';
+    S.bookTitle    = proj.title||'';
+    S.manus        = proj.manus||'';
+    S.beskrivelse  = proj.beskrivelse||'';
+    S.characters   = (proj.characters||[]).map(c=>({...c,dataUrl:null}));
+    S.objects      = (proj.objects||[]).map(o=>({...o,dataUrl:null}));
+    S.world        = proj.world ? {
+      world_name:                  proj.world.world_name||'',
+      core_location:               proj.world.core_location||'',
+      recurring_landmarks:         (proj.world.recurring_landmarks||[]).join(', '),
+      season:                      proj.world.season||'',
+      weather_baseline:            proj.world.weather_baseline||'',
+      forbidden_environment_drift: (proj.world.forbidden_environment_drift||[]).join(', '),
+    } : S.world;
+    S.projectId   = projectId;
+    S.projectData = proj;
+    localStorage.setItem('proj_id',projectId);
+    localStorage.setItem('sb_master',S.masterPrompt);
+    // If project has results, go to viewer; otherwise go to generate
+    const hasResults=Object.values(proj.results||{}).some(r=>r.status==='done');
+    S.step = hasResults ? 5 : 4;
+    if(proj.status==='running'||proj.status==='queued') startPolling(projectId);
+    await doParse();
+    render();
+  }catch(e){alert('Feil: '+e.message);}
+}
+
+async function duplicateProject(projectId){
+  try{
+    const r=await fetch(base()+`/projects/${projectId}/duplicate`,{method:'POST',headers:authH()});
+    const d=await r.json();
+    if(d.error){alert(d.error);return;}
+    alert(`Prosjekt kopiert! Åpner kopien…`);
+    openProject(d.projectId);
+  }catch(e){alert('Feil: '+e.message);}
+}
+
+async function stopProject(projectId,btn){
+  try{
+    const r=await fetch(base()+`/projects/${projectId}/stop`,{method:'POST',headers:authH()});
+    const d=await r.json();
+    if(d.error){alert(d.error);return;}
+    if(btn)btn.textContent='Stopper…';
+    // Refresh library after 2s
+    setTimeout(showLibrary,2000);
+  }catch(e){alert('Feil: '+e.message);}
+}
+
+async function deleteProject(projectId,btn){
+  if(!confirm('Slette dette prosjektet og alle tilhørende bilder?'))return;
+  try{
+    const r=await fetch(base()+`/projects/${projectId}`,{method:'DELETE',headers:authH()});
+    const d=await r.json();
+    if(d.error){alert(d.error);return;}
+    if(S.projectId===projectId){S.projectId=null;S.projectData=null;localStorage.removeItem('proj_id');}
+    btn?.closest('.proj-item')?.remove();
+  }catch(e){alert('Feil: '+e.message);}
+}
+
+async function exportProject(projectId){
+  // Download text file directly
+  const a=document.createElement('a');
+  a.href=base()+`/projects/${projectId}/export?type=text`;
+  a.click();
+}
+
+// ── Polling ──
+function startPolling(projectId){
+  if(S.polling)clearInterval(S.polling);
+  S.projectId=projectId;localStorage.setItem('proj_id',projectId);
+  S.polling=setInterval(async()=>{
+    const r=await fetch(base()+`/projects/${projectId}`,{headers:authH()});
+    S.projectData=await r.json().catch(()=>null);
+    if(S.step===4)renderMain();
+    if(S.projectData?.status==='done'||S.projectData?.status==='stopped'||S.projectData?.status==='error'){clearInterval(S.polling);S.polling=null;}
+  },4000);
+}
+
+// ── Parse ──
 function triggerParse(){clearTimeout(S.parseDebounce);S.parseDebounce=setTimeout(doParse,600);}
 async function doParse(){
-  if(!S.manus.trim()){S.parsedPages=[];renderMain();return;}
-  const worldObj=buildWorldObj();
+  if(!S.manus.trim()){S.parsedPages=[];const el=document.getElementById('previewBody');if(el){el.innerHTML='';}return;}
   try{
     const r=await fetch(base()+'/parse',{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({manus:S.manus,beskrivelse:S.beskrivelse,
         characters:S.characters.map(c=>({id:c.id,name:c.name,rigidDesc:c.rigidDesc,fixedTraits:c.fixedTraits,forbiddenTraits:c.forbiddenTraits,conditionalTraits:c.conditionalTraits})),
         objects:S.objects.map(o=>({id:o.id,name:o.name,rigidDesc:o.rigidDesc,defaultBinding:o.defaultBinding})),
-        world:worldObj})});
+        world:buildWorldObj()})});
     const d=await r.json();S.parsedPages=d.pages||[];
   }catch(_){S.parsedPages=[];}
   const el=document.getElementById('previewBody');
-  if(el){el.innerHTML=renderPreviewRows();}else{renderMain();}
+  if(el)el.innerHTML=renderPreviewRows();else if(S.step===3)renderMain();
 }
 
 function buildWorldObj(){
   const w=S.world;
   if(!w.world_name&&!w.core_location)return null;
-  return {
-    world_name:w.world_name||'',
-    core_location:w.core_location||'',
-    recurring_landmarks:w.recurring_landmarks?w.recurring_landmarks.split(',').map(s=>s.trim()).filter(Boolean):[],
-    season:w.season||'',
-    weather_baseline:w.weather_baseline||'',
-    forbidden_environment_drift:w.forbidden_environment_drift?w.forbidden_environment_drift.split(',').map(s=>s.trim()).filter(Boolean):[],
-  };
+  return {world_name:w.world_name,core_location:w.core_location,recurring_landmarks:w.recurring_landmarks?w.recurring_landmarks.split(',').map(s=>s.trim()).filter(Boolean):[],season:w.season,weather_baseline:w.weather_baseline,forbidden_environment_drift:w.forbidden_environment_drift?w.forbidden_environment_drift.split(',').map(s=>s.trim()).filter(Boolean):[]};
 }
 
 function renderPreviewRows(){
-  return S.parsedPages.map(p=>`
-    <tr>
-      <td>#p${String(p.pageNum).padStart(3,'0')}</td>
-      <td>${p.charRefs.map(r=>`<span class="tag">#c${r}</span>`).join('')||'—'}</td>
-      <td><span class="tag tag-sc">${esc((p.scene||'').slice(0,22))||'—'}</span></td>
-      <td><span class="tag tag-cam">${p.cam||'med'}</span> <span class="tag tag-cam">${p.angle||'eye'}</span> <span class="tag tag-cam">${p.scale||'gnd'}</span></td>
-      <td>${p.focus?`<em>${esc(p.focus.slice(0,25))}</em>`:'—'}</td>
-      <td>${p.relations?.map(r=>relLabel(r)).join(' ')||'—'}</td>
-      <td>${esc((p.visualDesc||p.suggestedVisual||'').slice(0,35))}…</td>
-    </tr>`).join('');
+  const relIcon={object_on_character:'🎁→👤',object_in_scene:'🎁🌍',character_reaches_object:'👤→🎁',character_reaches_character:'👤→👤',characters_together:'👤+👤'};
+  return S.parsedPages.map(p=>`<tr>
+    <td>#p${String(p.pageNum).padStart(3,'0')}</td>
+    <td>${p.charRefs.map(r=>`<span class="tag">#c${r}</span>`).join('')||'—'}</td>
+    <td><span class="tag tag-sc">${esc((p.scene||'').slice(0,20))||'—'}</span></td>
+    <td><span class="tag tag-cam">${p.cam||'med'}</span><span class="tag tag-cam">${p.scale||'gnd'}</span></td>
+    <td>${p.relations?.map(r=>`<span class="tag tag-rel">${relIcon[r.type]||'→'}</span>`).join('')||'—'}</td>
+    <td>${esc((p.visualDesc||p.suggestedVisual||'').slice(0,35))}…</td>
+  </tr>`).join('');
 }
 
-function relLabel(r){
-  const icons={object_on_character:'🎁→👤',object_in_scene:'🎁🌍',character_reaches_object:'👤→🎁',character_reaches_character:'👤→👤',characters_together:'👤+👤'};
-  return `<span class="tag tag-rel">${icons[r.type]||r.type}</span>`;
-}
-
-// ── START JOB ──
+// ── Start job ──
 async function startJob(){
-  if(!S.parsedPages.length){alert('Ingen sider funnet.');return;}
+  if(!S.parsedPages.length){alert('Ingen sider funnet i manus.');return;}
   const cost=(S.parsedPages.length*0.065).toFixed(2);
   if(!confirm(`Generere ${S.parsedPages.length} bilder?\nEstimert kostnad: $${cost}\n\nJobben kjører i bakgrunnen.`))return;
+
   const form=new FormData();
-  form.append('openaiKey',S.apiKey);
-  form.append('masterPrompt',S.masterPrompt);
-  form.append('manus',S.manus);
-  form.append('beskrivelse',S.beskrivelse);
-  form.append('title',S.bookTitle||`Bok ${new Date().toLocaleDateString('nb-NO')}`);
-  form.append('characters',JSON.stringify(S.characters.map(c=>({id:c.id,name:c.name,rigidDesc:c.rigidDesc,fixedTraits:c.fixedTraits,forbiddenTraits:c.forbiddenTraits,conditionalTraits:c.conditionalTraits}))));
-  form.append('objects',JSON.stringify(S.objects.map(o=>({id:o.id,name:o.name,rigidDesc:o.rigidDesc,defaultBinding:o.defaultBinding}))));
+  form.append('openaiKey',    S.apiKey);
+  form.append('masterPrompt', S.masterPrompt);
+  form.append('manus',        S.manus);
+  form.append('beskrivelse',  S.beskrivelse);
+  form.append('title',        S.bookTitle||`Bok ${new Date().toLocaleDateString('nb-NO')}`);
+  form.append('characters',   JSON.stringify(S.characters.map(c=>({id:c.id,name:c.name,rigidDesc:c.rigidDesc,fixedTraits:c.fixedTraits,forbiddenTraits:c.forbiddenTraits,conditionalTraits:c.conditionalTraits}))));
+  form.append('objects',      JSON.stringify(S.objects.map(o=>({id:o.id,name:o.name,rigidDesc:o.rigidDesc,defaultBinding:o.defaultBinding}))));
   const worldObj=buildWorldObj();
   if(worldObj)form.append('world',JSON.stringify(worldObj));
   for(const c of S.characters){if(c.dataUrl)form.append('charImages',dataUrlToBlob(c.dataUrl),`c${c.id}_${c.name}.png`);}
   for(const o of S.objects){if(o.dataUrl)form.append('objImages',dataUrlToBlob(o.dataUrl),`o${o.id}_${o.name}.png`);}
+
   try{
-    const r=await fetch(base()+'/jobs',{method:'POST',headers:authH(),body:form});
-    const d=await r.json();if(d.error){alert('Feil: '+d.error);return;}
-    startPolling(d.jobId);S.step=4;render();
+    const r=await fetch(base()+'/projects',{method:'POST',headers:authH(),body:form});
+    const d=await r.json();
+    if(d.error){alert('Feil: '+d.error);return;}
+    S.projectData=null;
+    startPolling(d.projectId);
+    S.step=4;render();
   }catch(e){alert('Feil: '+e.message);}
 }
 
 async function rerunPages(){
-  if(!S.jobId||!S.rerunSet.size)return;
+  if(!S.projectId||!S.rerunSet.size)return;
   const nums=[...S.rerunSet];
   if(!confirm(`Kjør side ${nums.join(', ')} på nytt?`))return;
-  try{await fetch(base()+`/jobs/${S.jobId}/rerun`,{method:'POST',headers:{'Content-Type':'application/json',...authH()},body:JSON.stringify({pageNums:nums})});S.rerunSet.clear();startPolling(S.jobId);render();}catch(e){alert(e.message);}
+  try{
+    await fetch(base()+`/projects/${S.projectId}/rerun`,{
+      method:'POST',headers:{'Content-Type':'application/json',...authH()},
+      body:JSON.stringify({pageNums:nums,openaiKey:S.apiKey}),
+    });
+    S.rerunSet.clear();startPolling(S.projectId);render();
+  }catch(e){alert(e.message);}
 }
 
-// ── VOICE ──
+async function stopCurrentJob(){
+  if(!S.projectId)return;
+  try{
+    await fetch(base()+`/projects/${S.projectId}/stop`,{method:'POST',headers:authH()});
+    render();
+  }catch(e){alert(e.message);}
+}
+
+// ── Voice ──
 function speak(text){
   if(S.speaking){speechSynthesis.cancel();S.speaking=false;render();return;}
-  const u=new SpeechSynthesisUtterance(text);u.lang='nb-NO';u.rate=0.88;u.pitch=1.05;
-  u.onend=()=>{S.speaking=false;render();};S.speaking=true;render();speechSynthesis.speak(u);
+  const u=new SpeechSynthesisUtterance(text);u.lang='nb-NO';u.rate=0.88;u.pitch=1.05;u.onend=()=>{S.speaking=false;render();};S.speaking=true;render();speechSynthesis.speak(u);
 }
 
-// ── VIDEO ──
+// ── Video ──
 async function makeVideo(withSpeech){
-  const results=Object.values(S.jobData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
+  const results=Object.values(S.projectData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
   if(!results.length)return;
   S.videoStatus='Laster bilder…';renderMain();
-  const imgs=await Promise.all(results.map(r=>new Promise(res=>{const i=new Image();i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=()=>res(null);i.src=imgUrl(S.jobId,r.pageNum);})));
+  const imgs=await Promise.all(results.map(r=>new Promise(res=>{const i=new Image();i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=()=>res(null);i.src=imgUrl(r.pageNum);})));
   S.videoStatus='Starter opptak…';renderMain();
   const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=1024;
-  const ctx=canvas.getContext('2d'),stream=canvas.captureStream(1),mime=MediaRecorder.isTypeSupported('video/webm;codecs=vp9')?'video/webm;codecs=vp9':'video/webm';
-  const rec=new MediaRecorder(stream,{mimeType:mime}),chunks=[];
-  rec.ondataavailable=e=>e.data.size&&chunks.push(e.data);
-  rec.onstop=()=>{const blob=new Blob(chunks,{type:'video/webm'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='eventyrbok.webm';a.click();S.videoStatus='Video klar! ✓';renderMain();setTimeout(()=>{S.videoStatus='';renderMain();},3000);};
+  const ctx=canvas.getContext('2d'),stream=canvas.captureStream(1);
+  const rec=new MediaRecorder(stream,{mimeType:MediaRecorder.isTypeSupported('video/webm;codecs=vp9')?'video/webm;codecs=vp9':'video/webm'});
+  const chunks=[];rec.ondataavailable=e=>e.data.size&&chunks.push(e.data);
+  rec.onstop=()=>{const blob=new Blob(chunks,{type:'video/webm'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(S.bookTitle||'eventyrbok')+'.webm';a.click();S.videoStatus='Video klar! ✓';renderMain();setTimeout(()=>{S.videoStatus='';renderMain();},3000);};
   rec.start();
   for(let i=0;i<results.length;i++){
     const r=results[i],img=imgs[i];S.videoStatus=`Side ${r.pageNum} av ${results.length}…`;renderMain();
     ctx.clearRect(0,0,1024,1024);if(img)ctx.drawImage(img,0,0,1024,1024);else{ctx.fillStyle='#1a1520';ctx.fillRect(0,0,1024,1024);}
     const g=ctx.createLinearGradient(0,700,0,1024);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(0.3,'rgba(0,0,0,0.65)');g.addColorStop(1,'rgba(0,0,0,0.9)');
-    ctx.fillStyle=g;ctx.fillRect(0,700,1024,324);ctx.fillStyle='rgba(184,145,42,0.92)';ctx.beginPath();ctx.roundRect(22,984,62,26,13);ctx.fill();
+    ctx.fillStyle=g;ctx.fillRect(0,700,1024,324);
+    ctx.fillStyle='rgba(184,145,42,0.92)';ctx.beginPath();ctx.roundRect(22,984,62,26,13);ctx.fill();
     ctx.fillStyle='#fff';ctx.font='bold 13px Georgia,serif';ctx.textAlign='center';ctx.fillText(`${r.pageNum}/${results.length}`,53,1001);
     ctx.font='22px Georgia,serif';ctx.shadowColor='rgba(0,0,0,0.85)';ctx.shadowBlur=6;
     const words=(r.storyText||'').split(' '),lines=[];let line='';
@@ -365,44 +510,68 @@ async function makeVideo(withSpeech){
   rec.stop();
 }
 
-async function dlZip(){
+// ── ZIP download ──
+async function dlZip(withText){
   if(!window.JSZip){const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';await new Promise(res=>{s.onload=res;document.head.appendChild(s);});}
-  const results=Object.values(S.jobData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
-  const zip=new window.JSZip(),folder=zip.folder('eventyrbok');
-  folder.file('historien.txt',results.map(r=>`Side ${r.pageNum}:\n${r.storyText}`).join('\n\n---\n\n'));
+  const results=Object.values(S.projectData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
+  const zip=new window.JSZip(),folder=zip.folder(S.bookTitle||'eventyrbok');
+  folder.file('historien.txt',results.map(r=>`[IMAGE: side_${String(r.pageNum).padStart(3,'0')}]\n${r.storyText}`).join('\n\n---\n\n'));
   S.videoStatus='Pakker bilder…';renderMain();
-  for(const r of results){try{const resp=await fetch(imgUrl(S.jobId,r.pageNum));folder.file(`side_${String(r.pageNum).padStart(2,'0')}.png`,await resp.arrayBuffer());}catch(_){}}
+  for(const r of results){
+    try{
+      if(withText){
+        // Fetch image and burn text in canvas
+        const img=await new Promise((res,rej)=>{const i=new Image();i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=rej;i.src=imgUrl(r.pageNum);});
+        const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=1024;
+        const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,1024,1024);
+        const g=ctx.createLinearGradient(0,700,0,1024);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(0.3,'rgba(0,0,0,0.65)');g.addColorStop(1,'rgba(0,0,0,0.9)');
+        ctx.fillStyle=g;ctx.fillRect(0,700,1024,324);
+        ctx.fillStyle='rgba(184,145,42,0.92)';ctx.beginPath();ctx.roundRect(22,984,62,26,13);ctx.fill();
+        ctx.fillStyle='#fff';ctx.font='bold 13px Georgia,serif';ctx.textAlign='center';ctx.fillText(`${r.pageNum}/${results.length}`,53,1001);
+        ctx.font='22px Georgia,serif';ctx.shadowColor='rgba(0,0,0,0.85)';ctx.shadowBlur=6;
+        const words=(r.storyText||'').split(' '),lines=[];let line='';
+        for(const w of words){const t=line+w+' ';if(ctx.measureText(t).width>950&&line){lines.push(line.trim());line=w+' ';}else line=t;}
+        if(line.trim())lines.push(line.trim());const shown=lines.slice(0,5),sy=752+Math.max(0,(5-shown.length)*17);
+        shown.forEach((l,li)=>ctx.fillText(l,512,sy+li*34));
+        const b64=canvas.toDataURL('image/png').split(',')[1];
+        folder.file(`side_${String(r.pageNum).padStart(2,'0')}.png`,b64,{base64:true});
+      }else{
+        const resp=await fetch(imgUrl(r.pageNum),{headers:authH()});
+        folder.file(`side_${String(r.pageNum).padStart(2,'0')}.png`,await resp.arrayBuffer());
+      }
+    }catch(_){}
+  }
   const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='eventyrbok.zip';a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(S.bookTitle||'eventyrbok')+'.zip';a.click();
   S.videoStatus='';renderMain();
 }
 
-function imgUrl(jid,pn){return base()+`/image/${jid}/${pn}?t=${Date.now()}`;}
+// ── Helpers ──
+function imgUrl(pageNum){return base()+`/image/${S.projectId}/${pageNum}?t=${Date.now()}`;}
 function dataUrlToBlob(du){const[h,d]=du.split(','),mime=h.match(/:(.*?);/)[1];const bin=atob(d),arr=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);return new Blob([arr],{type:mime});}
 function addImages(files,arr,prefix){const rs=Array.from(files).map(f=>new Promise(res=>{const r=new FileReader();r.onload=()=>res({name:f.name,dataUrl:r.result});r.readAsDataURL(f);}));Promise.all(rs).then(imgs=>{imgs.forEach((img,i)=>{const id=String(arr.length+i+1).padStart(2,'0');arr.push({id,name:`${prefix}${id}`,rigidDesc:'',fixedTraits:[],forbiddenTraits:[],conditionalTraits:[],defaultBinding:'none',dataUrl:img.dataUrl});});render();});}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function timeAgo(ts){if(!ts)return'';const m=Math.floor((Date.now()-ts)/60000);if(m<1)return'nettopp';if(m<60)return m+'m siden';return Math.floor(m/60)+'t siden';}
 
-// ── RENDER ──
+// ── Render ──
 function render(){renderTabs();renderMain();}
 function renderTabs(){document.getElementById('tabs').innerHTML=STEPS.map((s,i)=>`<button class="tab ${S.step===i?'active':i<S.step?'done':''}" onclick="if(${i}<=${S.step}){S.step=${i};render();}"><span class="tab-icon">${s.icon}</span>${s.label}</button>`).join('');}
 function renderMain(){const m=document.getElementById('main');if(S.step===0)m.innerHTML=renderSetup();else if(S.step===1)m.innerHTML=renderChars();else if(S.step===2)m.innerHTML=renderWorld();else if(S.step===3)m.innerHTML=renderManus();else if(S.step===4)m.innerHTML=renderGenerate();else m.innerHTML=renderViewer();attachEvents();}
 
 // ── Step 0: Setup ──
 function renderSetup(){return `
-  ${S.token?`<div class="notice notice-ok">👤 Innlogget som <strong>${esc(S.username)}</strong></div>`:''}
+  ${S.token?`<div class="notice notice-ok">👤 Innlogget som <strong>${esc(S.username)}</strong> — prosjektene dine lagres på kontoen.</div>`:'<div class="notice notice-info">Logg inn for å lagre og administrere prosjekter.</div>'}
   <div class="card"><div class="card-title">🔑 OpenAI API-nøkkel</div>
     <input type="password" value="${esc(S.apiKey)}" placeholder="sk-proj-…" oninput="S.apiKey=this.value;localStorage.setItem('oai_key',this.value)">
-    <p class="hint">Brukes til gpt-image-1. Lagres lokalt.</p>
+    <p class="hint">Sendes direkte til OpenAI via server. Lagres aldri på disk — kun i RAM under generering.</p>
   </div>
   <div class="card"><div class="card-title">🎨 Bildestil</div>
     <textarea rows="4" class="mono" placeholder="High-end cinematic 3D children's book illustration, Pixar style…" oninput="S.masterPrompt=this.value;localStorage.setItem('sb_master',this.value)">${esc(S.masterPrompt)}</textarea>
-    <p class="hint">Stil og atmosfære — ikke karakterer eller handling.</p>
+    <p class="hint">Kun stil — ikke karakterer eller handling.</p>
   </div>
   <div class="card"><div class="card-title">📗 Boktittel</div>
     <input type="text" value="${esc(S.bookTitle)}" placeholder="F.eks: Snufselufs og Eva" oninput="S.bookTitle=this.value">
   </div>
-  ${S.jobId?`<div class="card"><div class="card-title">📋 Forrige jobb</div><button class="btn btn-ghost btn-small" onclick="S.step=4;fetchJob(S.jobId).then(()=>render())">Gå tilbake →</button></div>`:''}
   <button class="btn btn-primary" ${!S.apiKey?'disabled':''} onclick="S.step=1;render()">Neste: Karakterer →</button>`;}
 
 // ── Step 1: Characters ──
@@ -413,12 +582,9 @@ function renderChars(){
       <div class="char-info">
         <div class="char-id">#c${c.id}</div>
         <input type="text" value="${esc(c.name)}" placeholder="Navn" style="margin-bottom:5px;font-size:13px;padding:7px 10px" oninput="S.characters[${i}].name=this.value">
-        <label class="lbl" style="font-size:11px;margin-top:4px">Rigid beskrivelse (kjønn, alder, kroppsbygning)</label>
-        <textarea rows="2" style="font-size:12px;padding:7px 10px;margin-bottom:5px" placeholder="4-år gammel jente, lyst langt hår, store blå øyne, Pixar-proporsjoner…" oninput="S.characters[${i}].rigidDesc=this.value">${esc(c.rigidDesc||'')}</textarea>
-        <label class="lbl" style="font-size:11px">Faste trekk — ALLTID (komma-separert)</label>
-        <input type="text" value="${(c.fixedTraits||[]).join(', ')}" placeholder="rosa prinsessekjole, gullkrone, lyst hår" style="margin-bottom:5px;font-size:12px;padding:7px 10px" oninput="S.characters[${i}].fixedTraits=this.value.split(',').map(s=>s.trim()).filter(Boolean)">
-        <label class="lbl" style="font-size:11px">Forbudte trekk — ALDRI (komma-separert)</label>
-        <input type="text" value="${(c.forbiddenTraits||[]).join(', ')}" placeholder="vinger, horn, hale" style="font-size:12px;padding:7px 10px" oninput="S.characters[${i}].forbiddenTraits=this.value.split(',').map(s=>s.trim()).filter(Boolean)">
+        <textarea rows="2" style="font-size:12px;padding:7px 10px;margin-bottom:4px" placeholder="Rigid beskrivelse: alder, kjønn, kropp…" oninput="S.characters[${i}].rigidDesc=this.value">${esc(c.rigidDesc||'')}</textarea>
+        <input type="text" value="${(c.fixedTraits||[]).join(', ')}" placeholder="Faste trekk: rosa kjole, gullkrone…" style="margin-bottom:4px;font-size:12px;padding:6px 10px" oninput="S.characters[${i}].fixedTraits=this.value.split(',').map(s=>s.trim()).filter(Boolean)">
+        <input type="text" value="${(c.forbiddenTraits||[]).join(', ')}" placeholder="Forbudte trekk: vinger, horn…" style="font-size:12px;padding:6px 10px" oninput="S.characters[${i}].forbiddenTraits=this.value.split(',').map(s=>s.trim()).filter(Boolean)">
       </div>
       <button class="btn btn-danger btn-small" style="width:auto;padding:5px 9px;flex-shrink:0" onclick="S.characters.splice(${i},1);S.characters.forEach((c,j)=>c.id=String(j+1).padStart(2,'0'));render()">✕</button>
     </div>`).join('');
@@ -428,145 +594,138 @@ function renderChars(){
       <div class="char-info">
         <div class="char-id" style="color:var(--muted)">#o${o.id}</div>
         <input type="text" value="${esc(o.name)}" placeholder="Navn" style="margin-bottom:5px;font-size:13px;padding:7px 10px" oninput="S.objects[${i}].name=this.value">
-        <textarea rows="2" style="font-size:12px;padding:7px 10px;margin-bottom:5px" placeholder="Lite hvitt hus med røde vinduskarmer og hvitt stakittgjerde foran…" oninput="S.objects[${i}].rigidDesc=this.value">${esc(o.rigidDesc||o.description||'')}</textarea>
-        <label class="lbl" style="font-size:11px">Standard binding</label>
-        <select style="font-size:12px;padding:7px 10px" oninput="S.objects[${i}].defaultBinding=this.value">
-          <option value="none" ${o.defaultBinding==='none'?'selected':''}>Ingen (bruk #o i beskrivelse)</option>
-          <option value="scene" ${o.defaultBinding==='scene'?'selected':''}>Del av scene/bakgrunn</option>
-        </select>
+        <textarea rows="2" style="font-size:12px;padding:7px 10px" placeholder="Rigid beskrivelse av objektet/stedet…" oninput="S.objects[${i}].rigidDesc=this.value">${esc(o.rigidDesc||o.description||'')}</textarea>
       </div>
       <button class="btn btn-danger btn-small" style="width:auto;padding:5px 9px;flex-shrink:0" onclick="S.objects.splice(${i},1);S.objects.forEach((o,j)=>o.id=String(j+1).padStart(2,'0'));render()">✕</button>
     </div>`).join('');
   return `
   <div class="card"><div class="card-title">👤 Karakterer</div>
-    ${charItems||'<p class="hint" style="margin-bottom:11px">Ingen ennå</p>'}
+    ${charItems||'<p class="hint" style="margin-bottom:10px">Ingen ennå</p>'}
     <input type="file" id="charFile" accept="image/*" multiple style="display:none">
     <button class="btn btn-ghost btn-small" onclick="document.getElementById('charFile').click()">+ Legg til karakter</button>
   </div>
   <div class="card"><div class="card-title">🎁 Objekter & steder</div>
-    ${objItems||'<p class="hint" style="margin-bottom:11px">Hus, gjenstander, steder osv.</p>'}
+    ${objItems||'<p class="hint" style="margin-bottom:10px">Hus, gjenstander, steder osv.</p>'}
     <input type="file" id="objFile" accept="image/*" multiple style="display:none">
     <button class="btn btn-ghost btn-small" onclick="document.getElementById('objFile').click()">+ Legg til objekt</button>
   </div>
-  <div class="btn-row">
-    <button class="btn btn-secondary" onclick="S.step=0;render()">← Tilbake</button>
-    <button class="btn btn-ghost" onclick="S.step=2;render()">Neste: Verden →</button>
-  </div>`;}
+  <div class="btn-row"><button class="btn btn-secondary" onclick="S.step=0;render()">← Tilbake</button><button class="btn btn-ghost" onclick="S.step=2;render()">Neste: Verden →</button></div>`;}
 
-// ── Step 2: World DNA ──
+// ── Step 2: World ──
 function renderWorld(){return `
-  <div class="card">
-    <div class="card-title">🌍 Verden & univers</div>
-    <p class="hint" style="margin-bottom:12px">World DNA brukes i alle bilder for å holde universet stabilt. Fyll inn det som gjelder.</p>
+  <div class="card"><div class="card-title">🌍 Verden & univers</div>
+    <p class="hint" style="margin-bottom:11px">Brukes i alle bilder for å holde bakgrunn og univers stabilt.</p>
     <label class="lbl">Verdensnavn</label>
-    <input type="text" value="${esc(S.world.world_name)}" placeholder="Snufselufs' verden" style="margin-bottom:10px" oninput="S.world.world_name=this.value">
-    <label class="lbl">Kjernelokasjonen (beskriv grundig)</label>
-    <textarea rows="3" placeholder="Liten norsk hage ved et hvitt trehus med røde vinduskarmer, hvitt stakittgjerde, åpen eng bak huset" oninput="S.world.core_location=this.value">${esc(S.world.core_location)}</textarea>
-    <label class="lbl" style="margin-top:10px">Gjentakende landemerker (komma-separert)</label>
-    <input type="text" value="${esc(S.world.recurring_landmarks)}" placeholder="rødt hus, hvitt gjerde, epletreet, blomsterbedet" style="margin-bottom:10px" oninput="S.world.recurring_landmarks=this.value">
+    <input type="text" value="${esc(S.world.world_name)}" placeholder="Snufselufs' verden" style="margin-bottom:9px" oninput="S.world.world_name=this.value">
+    <label class="lbl">Kjernelokasjonen</label>
+    <textarea rows="2" placeholder="Liten norsk hage ved hvitt trehus med røde vinduskarmer, hvitt stakittgjerde" oninput="S.world.core_location=this.value">${esc(S.world.core_location)}</textarea>
+    <label class="lbl" style="margin-top:9px">Gjentakende landemerker (komma)</label>
+    <input type="text" value="${esc(S.world.recurring_landmarks)}" placeholder="rødt hus, hvitt gjerde, epletreet" style="margin-bottom:9px" oninput="S.world.recurring_landmarks=this.value">
     <div class="two-col">
-      <div>
-        <label class="lbl">Årstid</label>
-        <input type="text" value="${esc(S.world.season)}" placeholder="sen vår, tidlig sommer" oninput="S.world.season=this.value">
-      </div>
-      <div>
-        <label class="lbl">Grunnvær</label>
-        <input type="text" value="${esc(S.world.weather_baseline)}" placeholder="sol med enkelte skyer" oninput="S.world.weather_baseline=this.value">
-      </div>
+      <div><label class="lbl">Årstid</label><input type="text" value="${esc(S.world.season)}" placeholder="sen vår" oninput="S.world.season=this.value"></div>
+      <div><label class="lbl">Grunnvær</label><input type="text" value="${esc(S.world.weather_baseline)}" placeholder="sol, noen skyer" oninput="S.world.weather_baseline=this.value"></div>
     </div>
-    <label class="lbl" style="margin-top:10px">Forbudt miljødrift (komma-separert)</label>
-    <input type="text" value="${esc(S.world.forbidden_environment_drift)}" placeholder="storby, japansk hage, høstløv, ørken, industribygg" oninput="S.world.forbidden_environment_drift=this.value">
-    <p class="hint">Disse elementene skal aldri dukke opp i bakgrunnen.</p>
+    <label class="lbl" style="margin-top:9px">Forbudt miljødrift (komma)</label>
+    <input type="text" value="${esc(S.world.forbidden_environment_drift)}" placeholder="storby, japansk hage, høstløv, ørken" oninput="S.world.forbidden_environment_drift=this.value">
   </div>
-  <div class="btn-row">
-    <button class="btn btn-secondary" onclick="S.step=1;render()">← Tilbake</button>
-    <button class="btn btn-ghost" onclick="S.step=3;render()">Neste: Manus →</button>
-  </div>`;}
+  <div class="btn-row"><button class="btn btn-secondary" onclick="S.step=1;render()">← Tilbake</button><button class="btn btn-ghost" onclick="S.step=3;render()">Neste: Manus →</button></div>`;}
 
 // ── Step 3: Manus ──
 function renderManus(){
-  const cc=S.characters.map(c=>`<span class="tag">#c${c.id}</span> ${esc(c.name)}`).join('  ');
-  const oc=S.objects.map(o=>`<span class="tag">#o${o.id}</span> ${esc(o.name)}`).join('  ');
+  const cc=S.characters.map(c=>`<span class="tag">#c${c.id}</span>${esc(c.name)}`).join(' ');
+  const oc=S.objects.map(o=>`<span class="tag">#o${o.id}</span>${esc(o.name)}`).join(' ');
   return `
   <div class="card"><div class="card-title">📖 Manus</div>
     <textarea id="manusTA" rows="9" class="mono" placeholder="#p001&#10;Det var en gang…&#10;&#10;#p002&#10;Neste scene." oninput="S.manus=this.value;triggerParse()">${esc(S.manus)}</textarea>
-    <p class="hint"><code style="background:rgba(184,145,42,0.12);padding:1px 5px;border-radius:4px">#p001</code> per side, teksten under.</p>
   </div>
   <div class="card"><div class="card-title">🎬 Bildebeskrivelser</div>
-    <div style="background:#f8f4ec;border:1px solid var(--light);border-radius:8px;padding:10px;margin-bottom:10px;font-size:11.5px;color:var(--muted);line-height:1.8">
-      <strong>Koder:</strong> <code style="font-size:11px;background:rgba(184,145,42,0.12);padding:1px 4px;border-radius:3px">#sc</code> scene (arves)
-      <code style="font-size:11px;background:rgba(60,80,180,0.1);padding:1px 4px;border-radius:3px">#cam close/medium/wide</code>
-      <code style="font-size:11px;background:rgba(60,80,180,0.1);padding:1px 4px;border-radius:3px">#angle eye/low/high/above</code>
-      <code style="font-size:11px;background:rgba(60,80,180,0.1);padding:1px 4px;border-radius:3px">#scale ground/above-head/rooftop/over-neighborhood</code>
-      <code style="font-size:11px;background:rgba(184,145,42,0.12);padding:1px 4px;border-radius:3px">#focus</code> hovedmotiv
-      <code style="font-size:11px;background:rgba(184,145,42,0.12);padding:1px 4px;border-radius:3px">#/</code> visuell beskrivelse<br>
-      <strong>Relasjoner:</strong>
-      <code style="font-size:11px;background:rgba(140,50,180,0.1);padding:1px 4px;border-radius:3px">#o01@#c02</code> objekt bæres av karakter
-      <code style="font-size:11px;background:rgba(140,50,180,0.1);padding:1px 4px;border-radius:3px">#o01@scene</code>
-      <code style="font-size:11px;background:rgba(140,50,180,0.1);padding:1px 4px;border-radius:3px">#c01>#o01</code> griper objekt
-      <code style="font-size:11px;background:rgba(140,50,180,0.1);padding:1px 4px;border-radius:3px">#c01>#c02</code> hjelper/holder
-      <code style="font-size:11px;background:rgba(140,50,180,0.1);padding:1px 4px;border-radius:3px">#c01+#c02</code> sammen<br>
-      ${cc?cc+'<br>':''}${oc||''}
+    <div style="background:#f8f4ec;border:1px solid var(--light);border-radius:8px;padding:10px;margin-bottom:10px;font-size:11px;color:var(--muted);line-height:1.9">
+      <code style="font-size:10.5px;background:rgba(184,145,42,0.12);padding:1px 4px;border-radius:3px">#sc</code> scene (arves)
+      <code style="font-size:10.5px;background:rgba(60,80,180,0.1);padding:1px 4px;border-radius:3px">#cam close/medium/wide</code>
+      <code style="font-size:10.5px;background:rgba(60,80,180,0.1);padding:1px 4px;border-radius:3px">#angle eye/low/high/above</code>
+      <code style="font-size:10.5px;background:rgba(60,80,180,0.1);padding:1px 4px;border-radius:3px">#scale ground/above-head/rooftop/over-neighborhood</code>
+      <code style="font-size:10.5px;background:rgba(184,145,42,0.12);padding:1px 4px;border-radius:3px">#focus</code>
+      <code style="font-size:10.5px;background:rgba(184,145,42,0.12);padding:1px 4px;border-radius:3px">#/</code> beskrivelse<br>
+      Relasjoner: <code style="font-size:10px;background:rgba(140,50,180,0.1);padding:1px 3px;border-radius:3px">#o01@#c02</code>
+      <code style="font-size:10px;background:rgba(140,50,180,0.1);padding:1px 3px;border-radius:3px">#o01@scene</code>
+      <code style="font-size:10px;background:rgba(140,50,180,0.1);padding:1px 3px;border-radius:3px">#c01>#o01</code>
+      <code style="font-size:10px;background:rgba(140,50,180,0.1);padding:1px 3px;border-radius:3px">#c01>#c02</code>
+      <code style="font-size:10px;background:rgba(140,50,180,0.1);padding:1px 3px;border-radius:3px">#c01+#c02</code><br>
+      ${cc?cc+'<br>':''}${oc}
     </div>
-    <textarea id="beskrivelseTA" rows="9" class="mono" placeholder="#p001 #c01 #sc solrik sommereng, dag #cam wide #angle eye #scale ground #focus Snufselufs #/ Snufselufs sitter på en sky og ser nysgjerrig ned" oninput="S.beskrivelse=this.value;triggerParse()">${esc(S.beskrivelse)}</textarea>
+    <textarea id="beskrivelseTA" rows="9" class="mono" placeholder="#p001 #c01 #sc solrik eng, dag #cam wide #scale ground #/ Snufselufs sitter på sky" oninput="S.beskrivelse=this.value;triggerParse()">${esc(S.beskrivelse)}</textarea>
   </div>
   ${S.parsedPages.length?`
   <div class="card"><div class="card-title">Forhåndsvisning — ${S.parsedPages.length} sider</div>
-    <div style="overflow-x:auto">
-      <table class="pt">
-        <thead><tr><th>Side</th><th>Chars</th><th>Scene</th><th>Kamera</th><th>Focus</th><th>Rel.</th><th>Visuelt</th></tr></thead>
-        <tbody id="previewBody">${renderPreviewRows()}</tbody>
-      </table>
-    </div>
+    <div style="overflow-x:auto"><table class="pt"><thead><tr><th>Side</th><th>Chars</th><th>Scene</th><th>Kamera</th><th>Rel.</th><th>Visuelt</th></tr></thead>
+    <tbody id="previewBody">${renderPreviewRows()}</tbody></table></div>
   </div>`:''}
-  <div class="btn-row">
-    <button class="btn btn-secondary" onclick="S.step=2;render()">← Tilbake</button>
-    <button class="btn btn-ghost" ${!S.parsedPages.length?'disabled':''} onclick="S.step=4;render()">Neste →</button>
-  </div>`;}
+  <div class="btn-row"><button class="btn btn-secondary" onclick="S.step=2;render()">← Tilbake</button><button class="btn btn-ghost" ${!S.parsedPages.length?'disabled':''} onclick="S.step=4;render()">Neste →</button></div>`;}
 
 // ── Step 4: Generate ──
 function renderGenerate(){
-  const job=S.jobData,results=job?Object.values(job.results||{}).sort((a,b)=>a.pageNum-b.pageNum):[];
-  const done=results.filter(r=>r.status==='done').length,total=job?.pageCount||S.parsedPages.length||0;
-  const pct=total>0?Math.round((job?.progress||0)/total*100):0,running=job?.status==='running'||job?.status==='queued';
-  if(!job)return `
+  const proj=S.projectData;
+  const results=proj?Object.values(proj.results||{}).sort((a,b)=>a.pageNum-b.pageNum):[];
+  const done=results.filter(r=>r.status==='done').length;
+  const total=proj?.total||S.parsedPages.length||0;
+  const pct=total>0?Math.round((proj?.progress||0)/total*100):0;
+  const running=proj?.status==='running'||proj?.status==='queued';
+
+  if(!proj)return `
   <div class="card"><div class="card-title">Sjekkliste</div>
     ${chk('OpenAI nøkkel',!!S.apiKey,S.apiKey?'Klar':'Mangler')}
-    ${chk('Masterprompt',!!S.masterPrompt,S.masterPrompt?'Klar':'Standard brukes')}
+    ${chk('Innlogget',!!S.token,S.token?S.username:'Kreves for å lagre')}
     ${chk('Karakterer',S.characters.length>0,S.characters.length+' karakterer',S.characters.length===0)}
     ${chk('Manus',S.parsedPages.length>0,S.parsedPages.length+' sider',S.parsedPages.length===0)}
-    ${chk('World DNA',!!(S.world.core_location),S.world.core_location?'Definert':'Ikke satt (valgfritt)',true)}
+    ${chk('World DNA',!!(S.world.core_location),S.world.core_location?'Definert':'Ikke satt',true)}
   </div>
-  <div class="notice notice-info">💡 Jobben kjører i bakgrunnen. Du kan <strong>lukke appen</strong> og komme tilbake.</div>
-  <button class="btn btn-primary" ${!S.apiKey||!S.parsedPages.length?'disabled':''} onclick="startJob()">🎨 Start — ${S.parsedPages.length} bilder (~$${(S.parsedPages.length*0.065).toFixed(2)})</button>
-  <button class="btn btn-secondary" style="margin-top:9px" onclick="S.step=3;render()">← Tilbake</button>`;
+  <div class="notice notice-info">💡 Jobben kjører i bakgrunnen på Railway. Du kan <strong>lukke appen</strong> og komme tilbake.</div>
+  <button class="btn btn-primary" ${!S.apiKey||!S.parsedPages.length||!S.token?'disabled':''} onclick="startJob()">
+    🎨 Start — ${S.parsedPages.length} bilder (~$${(S.parsedPages.length*0.065).toFixed(2)})
+  </button>
+  <button class="btn btn-secondary" style="margin-top:8px" onclick="S.step=3;render()">← Tilbake</button>`;
 
-  const cells=Array.from({length:total},(_,i)=>{const pn=i+1,r=results.find(x=>x.pageNum===pn);
-    if(!r)return`<div class="live-cell ${running&&i<(job?.progress||0)?'spin':''}">${pn}</div>`;
+  const cells=Array.from({length:total},(_,i)=>{
+    const pn=i+1,r=results.find(x=>x.pageNum===pn);
+    if(!r)return`<div class="live-cell ${running&&i<(proj?.progress||0)?'spin':''}">${pn}</div>`;
     if(r.status==='error')return`<div class="live-cell err" onclick="S.rerunSet.has(${pn})?S.rerunSet.delete(${pn}):S.rerunSet.add(${pn});render()">✗<div class="live-cell-num">${pn}</div></div>`;
-    return`<div class="live-cell done" onclick="S.curPage=${i};S.step=5;render()"><img src="${imgUrl(S.jobId,pn)}" loading="lazy"><div class="live-cell-num">${pn}</div></div>`;
+    return`<div class="live-cell done" onclick="S.curPage=${i};S.step=5;render()"><img src="${imgUrl(pn)}" loading="lazy"><div class="live-cell-num">${pn}</div></div>`;
   }).join('');
+
+  const statusLabel={done:'✅ Ferdig',running:'🎨 Genererer…',queued:'⏳ Venter…',stopped:'⏹ Stoppet',error:'⚠️ Feil'}[proj.status]||proj.status;
+
   return `
-  <div class="card"><div class="card-title">${running?'🎨 Genererer…':job.status==='done'?'✅ Ferdig!':'⚠️ Stoppet'}</div>
-    ${running?`<div class="progress-label">${done} av ${total} bilder ferdig</div><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div><p class="hint" style="text-align:right;margin-top:5px">Oppdateres automatisk · ${timeAgo(job.createdAt)}</p>`
-    :`<p style="font-size:13px;color:var(--muted);margin-bottom:10px">${done} av ${total} generert · ${timeAgo(job.completedAt)}</p>`}
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div class="card-title" style="margin-bottom:0">${statusLabel}</div>
+      ${running?`<button class="btn btn-stop btn-small" onclick="stopCurrentJob()">⏹ Stopp</button>`:''}
+    </div>
+    ${running?`<div class="progress-label">${done} av ${total} bilder ferdig</div><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div><p class="hint" style="text-align:right;margin-top:5px">Oppdateres automatisk · ${timeAgo(proj.createdAt)}</p>`
+    :`<p style="font-size:13px;color:var(--muted);margin-bottom:10px">${done} av ${total} generert · ${timeAgo(proj.updatedAt||proj.createdAt)}</p>`}
+    ${proj.error?`<div class="notice notice-err" style="margin-top:8px">${esc(proj.error)}</div>`:''}
     <div class="live-grid">${cells}</div>
   </div>
-  ${S.rerunSet.size?`<div class="notice notice-warn">${S.rerunSet.size} side(r) valgt<br><button class="btn btn-ghost btn-small" style="margin-top:7px" onclick="rerunPages()">↻ Kjør på nytt</button></div>`:''}
+  ${S.rerunSet.size?`<div class="notice notice-warn">${S.rerunSet.size} side(r) valgt
+    <br><button class="btn btn-ghost btn-small" style="margin-top:7px" onclick="rerunPages()">↻ Kjør på nytt</button></div>`:''}
+  ${(proj.status==='stopped'||proj.status==='error')?`
+  <div class="notice notice-warn">
+    Jobben er ${proj.status==='stopped'?'stoppet':'feilet'}. Klikk «Gjenstart» for å fortsette (krever API-nøkkel).
+    <br><button class="btn btn-ghost btn-small" style="margin-top:7px" onclick="rerunPages()">↻ Gjenstart</button>
+  </div>`:''}
   ${done>0?`<button class="btn btn-primary" onclick="S.step=5;render()">Se bilder →</button>`:''}
-  <button class="btn btn-secondary" style="margin-top:9px" onclick="S.jobId=null;S.jobData=null;localStorage.removeItem('job_id');if(S.polling)clearInterval(S.polling);render()">+ Ny jobb</button>`;}
+  <button class="btn btn-secondary" style="margin-top:8px" onclick="S.projectId=null;S.projectData=null;localStorage.removeItem('proj_id');if(S.polling)clearInterval(S.polling);render()">+ Nytt prosjekt</button>`;}
 
 function chk(l,ok,d,w=false){return`<div class="check-row"><span>${l}</span><span class="${ok?'ok-t':w?'warn-t':'err-t'}">${ok?'✓':w?'⚠':'✗'} ${d}</span></div>`;}
 
 // ── Step 5: Viewer ──
 function renderViewer(){
-  const results=Object.values(S.jobData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
+  const results=Object.values(S.projectData?.results||{}).filter(r=>r.status==='done').sort((a,b)=>a.pageNum-b.pageNum);
   if(!results.length)return`<div class="notice notice-warn">Ingen bilder ennå.</div><button class="btn btn-primary" onclick="S.step=4;render()">← Tilbake</button>`;
   const cur=results[S.curPage]||results[0];
   return `
   <div class="viewer-wrap">
-    <img src="${imgUrl(S.jobId,cur.pageNum)}" loading="lazy">
-    <div class="viewer-badge">${cur.pageNum} / ${S.jobData.pageCount}</div>
+    <img src="${imgUrl(cur.pageNum)}" loading="lazy">
+    <div class="viewer-badge">${cur.pageNum} / ${S.projectData.total}</div>
     <button class="viewer-speak" onclick="speak(${JSON.stringify(cur.storyText||'').replace(/</g,'\\x3c')})">${S.speaking?'⏹':'🔊'}</button>
   </div>
   <div class="viewer-text">${esc(cur.storyText)}</div>
@@ -576,33 +735,41 @@ function renderViewer(){
     <button class="nav-btn" ${S.curPage>=results.length-1?'disabled':''} onclick="S.curPage++;render()">›</button>
   </div>
   <div class="strip" id="strip">
-    ${results.map((r,i)=>`<div class="strip-cell ${i===S.curPage?'active':''}" onclick="S.curPage=${i};render()"><img src="${imgUrl(S.jobId,r.pageNum)}" loading="lazy"><div class="strip-num">${r.pageNum}</div></div>`).join('')}
+    ${results.map((r,i)=>`<div class="strip-cell ${i===S.curPage?'active':''}" onclick="S.curPage=${i};render()"><img src="${imgUrl(r.pageNum)}" loading="lazy"><div class="strip-num">${r.pageNum}</div></div>`).join('')}
   </div>
   <div class="save-tip">📱 <strong>Lagre:</strong> Trykk og hold → «Legg til i Bilder»</div>
-  <div class="card"><div class="card-title">📦 Last ned & eksporter</div>
+  <div class="card"><div class="card-title">📦 Eksport</div>
     <div class="dl-grid">
-      <div class="dl-btn" onclick="dlZip()"><span class="dl-icon">📦</span><span class="dl-label">Alle bilder ZIP</span></div>
+      <div class="dl-btn" onclick="dlZip(false)"><span class="dl-icon">📦</span><span class="dl-label">ZIP uten tekst</span></div>
+      <div class="dl-btn" onclick="dlZip(true)"><span class="dl-icon">📦✍️</span><span class="dl-label">ZIP med tekst</span></div>
       <div class="dl-btn" onclick="makeVideo(false)"><span class="dl-icon">🎬</span><span class="dl-label">Video slideshow</span></div>
       <div class="dl-btn" onclick="makeVideo(true)"><span class="dl-icon">🎬🔊</span><span class="dl-label">Video med stemme</span></div>
+      <div class="dl-btn" onclick="window.location.href=base()+'/projects/${S.projectId}/export?type=text',authH()"><span class="dl-icon">📄</span><span class="dl-label">Tekstfil med placeholder</span></div>
       <div class="dl-btn" onclick="speak(results.map(r=>r.storyText).join('. '))"><span class="dl-icon">${S.speaking?'⏹':'🎙'}</span><span class="dl-label">${S.speaking?'Stopp':'Les opp'} boken</span></div>
     </div>
     ${S.videoStatus?`<div class="video-status">⏳ ${esc(S.videoStatus)}</div>`:''}
   </div>
   <div class="btn-row">
     <button class="btn btn-secondary" onclick="S.step=4;render()">← Oversikt</button>
-    <button class="btn btn-ghost" onclick="S.jobId=null;S.jobData=null;localStorage.removeItem('job_id');if(S.polling)clearInterval(S.polling);S.step=0;render()">+ Ny bok</button>
+    <button class="btn btn-ghost" onclick="duplicateProject(S.projectId)">📋 Dupliser</button>
   </div>`;}
 
-// ── EVENTS ──
+// ── Events ──
 function attachEvents(){
   const cf=document.getElementById('charFile');if(cf)cf.addEventListener('change',e=>addImages(e.target.files,S.characters,'c'));
   const of=document.getElementById('objFile');if(of)of.addEventListener('change',e=>addImages(e.target.files,S.objects,'o'));
   const strip=document.getElementById('strip');if(strip){const a=strip.querySelector('.strip-cell.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
 }
 
-// ── BOOT ──
+// ── Boot ──
 render();updatePill();updateUserBtn();
-if(S.jobId){fetchJob(S.jobId).then(()=>{if(S.jobData?.status==='running'||S.jobData?.status==='queued')startPolling(S.jobId);render();});}
+if(S.projectId&&S.token){
+  fetch(base()+`/projects/${S.projectId}`,{headers:authH()}).then(r=>r.json()).then(d=>{
+    S.projectData=d;
+    if(d.status==='running'||d.status==='queued')startPolling(S.projectId);
+    render();
+  }).catch(()=>{});
+}
 </script>
 </body>
 </html>
