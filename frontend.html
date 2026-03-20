@@ -141,39 +141,11 @@ textarea{resize:vertical;line-height:1.7}.mono{font-family:'Courier New',monospa
   <div class="hdr-row">
     <div class="status-pill chk" id="pill" onclick="updatePill()"><div class="pdot"></div><span id="pillTxt">Sjekker…</span></div>
     <button class="lib-btn" onclick="showLibrary()">📚 Mine bøker</button>
-    <button class="user-btn" id="userBtn" onclick="toggleAuth()">Logg inn</button>
   </div>
 </header>
 
 <nav class="tabs" id="tabs"></nav>
 <main class="main" id="main"></main>
-
-<!-- Auth modal -->
-<div class="modal-overlay" id="authModal" style="display:none" onclick="if(event.target===this)hideAuth()">
-  <div class="modal">
-    <div class="modal-title">📚 Min konto</div>
-    <div class="modal-tabs">
-      <button class="modal-tab active" id="loginTab" onclick="switchAuthTab('login')">Logg inn</button>
-      <button class="modal-tab" id="registerTab" onclick="switchAuthTab('register')">Opprett konto</button>
-    </div>
-    <div id="authError" class="modal-error" style="display:none"></div>
-    <div id="loginForm">
-      <label class="lbl">Brukernavn</label>
-      <input type="text" id="loginUser" placeholder="brukernavn" style="margin-bottom:10px" autocomplete="username">
-      <label class="lbl">Passord</label>
-      <input type="password" id="loginPass" placeholder="passord" style="margin-bottom:14px" autocomplete="current-password">
-      <button class="btn btn-primary" onclick="doLogin()">Logg inn</button>
-    </div>
-    <div id="registerForm" style="display:none">
-      <label class="lbl">Brukernavn</label>
-      <input type="text" id="regUser" placeholder="velg brukernavn" style="margin-bottom:10px" autocomplete="username">
-      <label class="lbl">Passord</label>
-      <input type="password" id="regPass" placeholder="minst 6 tegn" style="margin-bottom:14px" autocomplete="new-password">
-      <button class="btn btn-primary" onclick="doRegister()">Opprett konto</button>
-    </div>
-    <button class="btn btn-secondary" style="margin-top:9px" onclick="hideAuth()">Avbryt</button>
-  </div>
-</div>
 
 <script>
 // ═══════════════════════════════════════
@@ -181,8 +153,7 @@ textarea{resize:vertical;line-height:1.7}.mono{font-family:'Courier New',monospa
 // ═══════════════════════════════════════
 const S = {
   step: 0,
-  token:    localStorage.getItem('sb_token')    || null,
-  username: localStorage.getItem('sb_username') || null,
+
   // Editor fields
   apiKey:       localStorage.getItem('oai_key')  || '',
   masterPrompt: localStorage.getItem('sb_master')|| '',
@@ -215,7 +186,7 @@ const STEPS = [
 ];
 
 function base(){return window.location.origin;}
-function authH(){return S.token?{'x-user-token':S.token}:{};}
+function authH(){return {};}
 
 // ── Backend check ──
 async function updatePill(){
@@ -252,9 +223,8 @@ function updateUserBtn(){const b=document.getElementById('userBtn');if(b)b.textC
 
 // ── Library ──
 async function showLibrary(){
-  if(!S.token){alert('Logg inn for å se biblioteket ditt.');toggleAuth();return;}
   try{
-    const r=await fetch(base()+'/projects',{headers:authH()});
+    const r=await fetch(base()+'/projects',{});
     const d=await r.json();
     renderLibraryModal(d.projects||[]);
   }catch(e){alert('Feil: '+e.message);}
@@ -307,7 +277,7 @@ function renderLibraryModal(projects){
 
 async function openProject(projectId){
   try{
-    const r=await fetch(base()+`/projects/${projectId}`,{headers:authH()});
+    const r=await fetch(base()+`/projects/${projectId}`,{});
     const proj=await r.json();
     if(proj.error){alert(proj.error);return;}
     // Load all fields into editor state
@@ -340,7 +310,7 @@ async function openProject(projectId){
 
 async function duplicateProject(projectId){
   try{
-    const r=await fetch(base()+`/projects/${projectId}/duplicate`,{method:'POST',headers:authH()});
+    const r=await fetch(base()+`/projects/${projectId}/duplicate`,{method:'POST'});
     const d=await r.json();
     if(d.error){alert(d.error);return;}
     alert(`Prosjekt kopiert! Åpner kopien…`);
@@ -350,7 +320,7 @@ async function duplicateProject(projectId){
 
 async function stopProject(projectId,btn){
   try{
-    const r=await fetch(base()+`/projects/${projectId}/stop`,{method:'POST',headers:authH()});
+    const r=await fetch(base()+`/projects/${projectId}/stop`,{method:'POST'});
     const d=await r.json();
     if(d.error){alert(d.error);return;}
     if(btn)btn.textContent='Stopper…';
@@ -362,7 +332,7 @@ async function stopProject(projectId,btn){
 async function deleteProject(projectId,btn){
   if(!confirm('Slette dette prosjektet og alle tilhørende bilder?'))return;
   try{
-    const r=await fetch(base()+`/projects/${projectId}`,{method:'DELETE',headers:authH()});
+    const r=await fetch(base()+`/projects/${projectId}`,{method:'DELETE'});
     const d=await r.json();
     if(d.error){alert(d.error);return;}
     if(S.projectId===projectId){S.projectId=null;S.projectData=null;localStorage.removeItem('proj_id');}
@@ -382,7 +352,7 @@ function startPolling(projectId){
   if(S.polling)clearInterval(S.polling);
   S.projectId=projectId;localStorage.setItem('proj_id',projectId);
   S.polling=setInterval(async()=>{
-    const r=await fetch(base()+`/projects/${projectId}`,{headers:authH()});
+    const r=await fetch(base()+`/projects/${projectId}`,{});
     S.projectData=await r.json().catch(()=>null);
     if(S.step===4)renderMain();
     if(S.projectData?.status==='done'||S.projectData?.status==='stopped'||S.projectData?.status==='error'){clearInterval(S.polling);S.polling=null;}
@@ -443,7 +413,7 @@ async function startJob(){
   for(const o of S.objects){if(o.dataUrl)form.append('objImages',dataUrlToBlob(o.dataUrl),`o${o.id}_${o.name}.png`);}
 
   try{
-    const r=await fetch(base()+'/projects',{method:'POST',headers:authH(),body:form});
+    const r=await fetch(base()+'/projects',{method:'POST',body:form});
     const d=await r.json();
     if(d.error){alert('Feil: '+d.error);return;}
     S.projectData=null;
@@ -468,7 +438,7 @@ async function rerunPages(){
 async function stopCurrentJob(){
   if(!S.projectId)return;
   try{
-    await fetch(base()+`/projects/${S.projectId}/stop`,{method:'POST',headers:authH()});
+    await fetch(base()+`/projects/${S.projectId}/stop`,{method:'POST'});
     render();
   }catch(e){alert(e.message);}
 }
@@ -536,7 +506,7 @@ async function dlZip(withText){
         const b64=canvas.toDataURL('image/png').split(',')[1];
         folder.file(`side_${String(r.pageNum).padStart(2,'0')}.png`,b64,{base64:true});
       }else{
-        const resp=await fetch(imgUrl(r.pageNum),{headers:authH()});
+        const resp=await fetch(imgUrl(r.pageNum),{});
         folder.file(`side_${String(r.pageNum).padStart(2,'0')}.png`,await resp.arrayBuffer());
       }
     }catch(_){}
@@ -560,7 +530,7 @@ function renderMain(){const m=document.getElementById('main');if(S.step===0)m.in
 
 // ── Step 0: Setup ──
 function renderSetup(){return `
-  ${S.token?`<div class="notice notice-ok">👤 Innlogget som <strong>${esc(S.username)}</strong> — prosjektene dine lagres på kontoen.</div>`:'<div class="notice notice-info">Logg inn for å lagre og administrere prosjekter.</div>'}
+  
   <div class="card"><div class="card-title">🔑 OpenAI API-nøkkel</div>
     <input type="password" value="${esc(S.apiKey)}" placeholder="sk-proj-…" oninput="S.apiKey=this.value;localStorage.setItem('oai_key',this.value)">
     <p class="hint">Sendes direkte til OpenAI via server. Lagres aldri på disk — kun i RAM under generering.</p>
@@ -674,13 +644,13 @@ function renderGenerate(){
   if(!proj)return `
   <div class="card"><div class="card-title">Sjekkliste</div>
     ${chk('OpenAI nøkkel',!!S.apiKey,S.apiKey?'Klar':'Mangler')}
-    ${chk('Innlogget',!!S.token,S.token?S.username:'Kreves for å lagre')}
+    
     ${chk('Karakterer',S.characters.length>0,S.characters.length+' karakterer',S.characters.length===0)}
     ${chk('Manus',S.parsedPages.length>0,S.parsedPages.length+' sider',S.parsedPages.length===0)}
     ${chk('World DNA',!!(S.world.core_location),S.world.core_location?'Definert':'Ikke satt',true)}
   </div>
   <div class="notice notice-info">💡 Jobben kjører i bakgrunnen på Railway. Du kan <strong>lukke appen</strong> og komme tilbake.</div>
-  <button class="btn btn-primary" ${!S.apiKey||!S.parsedPages.length||!S.token?'disabled':''} onclick="startJob()">
+  <button class="btn btn-primary" ${!S.apiKey||!S.parsedPages.length?'disabled':''} onclick="startJob()">
     🎨 Start — ${S.parsedPages.length} bilder (~$${(S.parsedPages.length*0.065).toFixed(2)})
   </button>
   <button class="btn btn-secondary" style="margin-top:8px" onclick="S.step=3;render()">← Tilbake</button>`;
@@ -762,9 +732,8 @@ function attachEvents(){
 }
 
 // ── Boot ──
-render();updatePill();updateUserBtn();
-if(S.projectId&&S.token){
-  fetch(base()+`/projects/${S.projectId}`,{headers:authH()}).then(r=>r.json()).then(d=>{
+render();updatePill();if(S.projectId){
+  fetch(base()+`/projects/${S.projectId}`,{}).then(r=>r.json()).then(d=>{
     S.projectData=d;
     if(d.status==='running'||d.status==='queued')startPolling(S.projectId);
     render();
