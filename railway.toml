@@ -1,0 +1,6 @@
+[deploy]
+startCommand = "node server.js"
+
+[[volumes]]
+name = "storybook-data"
+mountPath = "/app/data"
